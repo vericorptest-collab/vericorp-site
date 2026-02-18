@@ -1,0 +1,99 @@
+{
+  "document_type": "invoice",
+  "confidence": 0.91,
+  "issuer": {
+    "name": "Müller Ingenieure AG",
+    "tax_id": "DE314159265",
+    "tax_id_valid": true,
+    "tax_id_country": "DE",
+    "address": "Leopoldstraße 28, 80802 München, Deutschland",
+    "iban": "DE89370400440532013000",
+    "iban_valid": true,
+    "iban_formatted": "DE89 3704 0044 0532 0130 00",
+    "bank_name": "Commerzbank",
+    "bank_bic": "COBADEFFXXX"
+  },
+  "recipient": {
+    "name": "NovaTech Solutions B.V.",
+    "tax_id": "NL823456789B01",
+    "tax_id_valid": true,
+    "tax_id_country": "NL",
+    "address": "Herengracht 420, 1017 BZ Amsterdam, Nederland",
+    "iban": null,
+    "iban_valid": null,
+    "iban_formatted": null,
+    "bank_name": null,
+    "bank_bic": null
+  },
+  "invoice_number": "RE-2024-03871",
+  "issue_date": "2024-12-02",
+  "due_date": "2025-01-02",
+  "currency": "EUR",
+  "line_items": [
+    {
+      "description": "Technische Beratung — Projekt Digitalisierung",
+      "quantity": 40,
+      "unit_price": 150.00,
+      "vat_rate": 19,
+      "amount": 6000.00,
+      "confidence": 0.93
+    },
+    {
+      "description": "Softwareentwicklung Backend-API",
+      "quantity": 200,
+      "unit_price": 110.00,
+      "vat_rate": 19,
+      "amount": 22000.00,
+      "confidence": 0.92
+    },
+    {
+      "description": "Cloud-Infrastruktur Setup",
+      "quantity": 1,
+      "unit_price": 3500.00,
+      "vat_rate": 19,
+      "amount": 3500.00,
+      "confidence": 0.90
+    }
+  ],
+  "totals": {
+    "subtotal": 31500.00,
+    "vat_amount": 5985.00,
+    "total": 37485.00,
+    "vat_breakdown": [
+      { "rate": 19, "base": 31500.00, "amount": 5985.00 }
+    ],
+    "validation": {
+      "line_items_match": true,
+      "vat_match": true,
+      "total_match": true
+    }
+  },
+  "payment": {
+    "iban": "DE89370400440532013000",
+    "iban_valid": true,
+    "iban_formatted": "DE89 3704 0044 0532 0130 00",
+    "bank_name": "Commerzbank",
+    "bank_bic": "COBADEFFXXX",
+    "reference": "Projekt-Nr. DIG-2024-Q4",
+    "method": "bank_transfer"
+  },
+  "metadata": {
+    "model": "scout",
+    "neurons_used": 150,
+    "processing_time_ms": 3120,
+    "pages": 2,
+    "retries": 0,
+    "cached": false,
+    "file_hash": "b9d2e4f16a83..."
+  },
+  "quality": {
+    "level": "high",
+    "width": null,
+    "height": null,
+    "estimated_dpi": null,
+    "file_type": "application/pdf",
+    "file_size": 312890,
+    "warning": null,
+    "issues": []
+  }
+}

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VeriCorp — EU Financial Data APIs | Invoice Extract, Company Verify</title>
+<meta name="description" content="API suite for European financial data. Invoice extraction with NIF/IBAN validation, company verification for 28 EU countries. Built on Cloudflare edge.">
+<meta property="og:title" content="VeriCorp — EU Financial Data APIs">
+<meta property="og:description" content="Invoice extraction with NIF/IBAN validation, company verification for 28 EU countries. Built on Cloudflare edge.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vericorp.pages.dev">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <img src="/VeriCorp_Logo_128x128.png" width="24" height="24" alt="VeriCorp" style="border-radius:4px">
+      Veri<span>Corp</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <div class="nav-dropdown">
+        <a class="nav-dropdown-trigger" style="color:var(--muted);font-size:.875rem;font-weight:500">Products</a>
+        <div class="nav-dropdown-menu">
+          <a href="/products/company-verify">Company Verify<small>VAT validation + enrichment for 28 EU countries</small></a>
+          <a href="/products/invoice-extract">Invoice Extract<small>OCR + AI extraction + NIF/IBAN validation</small></a>
+          <a href="/products/doc-validate" class="coming-soon">Doc Validate<small>IBAN, BIC, SEPA, NIF document validation</small></a>
+        </div>
+      </div>
+      <a href="/pricing">Pricing</a>
+      <a href="/playground">Playground</a>
+      <a href="https://rapidapi.com/vericorp/api/vericorp-invoice-extract" class="nav-cta">Get API Key</a>
+    </div>
+    <button class="nav-mobile" aria-label="Menu">&#9776;</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" fill="#F59E0B"/></svg>
+    EU-Focused API Suite for Financial Data
+  </div>
+  <h1>Extract. Validate. <span class="gradient">Trust.</span></h1>
+  <p>APIs for European financial data. Invoice extraction with NIF/IBAN validation, company verification for 28 EU countries, document validation. Built on Cloudflare edge.</p>
+  <div class="hero-buttons">
+    <a href="/products/invoice-extract" class="btn btn-primary">Explore Invoice Extract &rarr;</a>
+    <a href="/products/company-verify" class="btn btn-secondary">Company Verify</a>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="num">3</div><div class="label">API Products</div></div>
+    <div class="hero-stat"><div class="num">28</div><div class="label">EU Countries</div></div>
+    <div class="hero-stat"><div class="num">&lt;200ms</div><div class="label">Cached Responses</div></div>
+    <div class="hero-stat"><div class="num">99.9%</div><div class="label">Edge Uptime</div></div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust">
+  <div class="trust-inner">
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      VIES &amp; NIF Validated
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+      GDPR Compliant
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      Cloudflare Edge
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+      No Cookies
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<section class="section section-center">
+  <div class="section-inner">
+    <div class="section-label">Products</div>
+    <h2 class="section-title">Three APIs. One platform.</h2>
+    <p class="section-subtitle">Each API solves a specific problem in European financial data. Use one or all three.</p>
+    <div class="products-grid">
+
+      <a class="product-card" href="/products/company-verify">
+        <div class="product-icon">&#127974;</div>
+        <span class="product-badge product-badge-live">LIVE</span>
+        <h3>Company Verify</h3>
+        <p>Validate NIF/VAT numbers and get enriched company data for 28 EU countries. Real-time VIES validation, 12 national registries, directors, PSC data.</p>
+        <span class="product-link">Explore API &rarr;</span>
+      </a>
+
+      <a class="product-card" href="/products/invoice-extract" style="border-color:rgba(59,130,246,.25)">
+        <div class="product-icon">&#128196;</div>
+        <span class="product-badge product-badge-new">NEW</span>
+        <h3>Invoice Extract</h3>
+        <p>Upload European invoices (PDF/photo) and get structured JSON with validated NIF/VAT and IBAN. AI-powered OCR with confidence scores.</p>
+        <span class="product-link">Explore API &rarr;</span>
+      </a>
+
+      <a class="product-card" href="/products/doc-validate" style="opacity:.7">
+        <div class="product-icon">&#128203;</div>
+        <span class="product-badge product-badge-soon">COMING SOON</span>
+        <h3>Doc Validate</h3>
+        <p>Validate IBAN, BIC, SEPA references, and NIF numbers in bulk. Upload documents and get validation results for all financial identifiers found.</p>
+        <span class="product-link">Learn more &rarr;</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ECOSYSTEM (unified) -->
+<section class="section section-light section-center" id="ecosystem">
+  <div class="section-inner">
+    <div class="section-label">Ecosystem</div>
+    <h2 class="section-title">Use VeriCorp your way</h2>
+    <p class="section-subtitle">SDKs, tools, and integrations for every workflow. All open-source.</p>
+    <div class="eco-grid">
+
+      <a class="eco-card" href="https://www.npmjs.com/package/vericorp" target="_blank" rel="noopener">
+        <div class="eco-icon">&#128230;</div>
+        <h3>JS SDK (Company)</h3>
+        <p>TypeScript-first, zero deps, retry with backoff, ESM + CJS.</p>
+        <code>npm install vericorp</code>
+        <span class="eco-link">View on npm &rarr;</span>
+      </a>
+
+      <a class="eco-card" href="https://www.npmjs.com/package/@vericorp/invoice-extract" target="_blank" rel="noopener">
+        <div class="eco-icon">&#128230;</div>
+        <h3>JS SDK (Invoice)</h3>
+        <p>TypeScript-first, zero deps, file upload helper, ESM + CJS.</p>
+        <code>npm install @vericorp/invoice-extract</code>
+        <span class="eco-link">View on npm &rarr;</span>
+      </a>
+
+      <a class="eco-card" href="https://pypi.org/project/vericorp/" target="_blank" rel="noopener">
+        <div class="eco-icon">&#128013;</div>
+        <h3>Python SDK (Company)</h3>
+        <p>Sync + async, Pydantic v2, httpx, full type hints.</p>
+        <code>pip install vericorp</code>
+        <span class="eco-link">View on PyPI &rarr;</span>
+      </a>
+
+      <a class="eco-card" href="https://pypi.org/project/vericorp-invoice-extract/" target="_blank" rel="noopener">
+        <div class="eco-icon">&#128013;</div>
+        <h3>Python SDK (Invoice)</h3>
+        <p>Sync + async, Pydantic v2, file path or bytes.</p>
+        <code>pip install vericorp-invoice-extract</code>
+        <span class="eco-link">View on PyPI &rarr;</span>
+      </a>
+
+      <a class="eco-card" href="https://github.com/vericorptest-collab/vericorp-mcp-server" target="_blank" rel="noopener">
+        <div class="eco-icon">&#129302;</div>
+        <h3>MCP Server</h3>
+        <p>Company lookup + invoice extraction in Claude, Cursor, or any MCP client.</p>
+        <code>Add to claude_desktop_config.json</code>
+        <span class="eco-link">Setup guide &rarr;</span>
+      </a>
+
+      <a class="eco-card" href="https://github.com/vericorptest-collab/validate-vat" target="_blank" rel="noopener">
+        <div class="eco-icon">&#9881;</div>
+        <h3>GitHub Action</h3>
+        <p>Validate VAT numbers in CI/CD. Fail builds on invalid VATs.</p>
+        <code>uses: vericorptest-collab/validate-vat@v1</code>
+        <span class="eco-link">View on GitHub &rarr;</span>
+      </a>
+
+      <a class="eco-card" href="https://vericorp-checker.pages.dev" target="_blank" rel="noopener">
+        <div class="eco-icon">&#128269;</div>
+        <h3>Free VAT Checker</h3>
+        <p>Instant company lookup online. No login, no API key required.</p>
+        <code>check.vericorp.dev</code>
+        <span class="eco-link">Open tool &rarr;</span>
+      </a>
+
+      <a class="eco-card" href="https://github.com/vericorptest-collab/vericorp-postman" target="_blank" rel="noopener">
+        <div class="eco-icon">&#128232;</div>
+        <h3>Postman Collections</h3>
+        <p>Pre-built requests for both APIs, test scripts, env vars.</p>
+        <code>Import collection JSON</code>
+        <span class="eco-link">Download &rarr;</span>
+      </a>
+
+      <a class="eco-card" href="https://www.npmjs.com/package/eu-iban-validator" target="_blank" rel="noopener">
+        <div class="eco-icon">&#127974;</div>
+        <h3>IBAN Validator</h3>
+        <p>Offline MOD-97 validation, 80+ countries, bank BIC lookup.</p>
+        <code>npm install eu-iban-validator</code>
+        <span class="eco-link">View on npm &rarr;</span>
+      </a>
+
+      <a class="eco-card" href="https://www.npmjs.com/package/eu-tax-id-validator" target="_blank" rel="noopener">
+        <div class="eco-icon">&#9989;</div>
+        <h3>Tax ID Validator</h3>
+        <p>Offline NIF/VAT validation, 30 countries, checksums, zero deps.</p>
+        <code>npm install eu-tax-id-validator</code>
+        <span class="eco-link">View on npm &rarr;</span>
+      </a>
+
+      <a class="eco-card" href="https://github.com/vericorptest-collab/vericorp-templates" target="_blank" rel="noopener">
+        <div class="eco-icon">&#128196;</div>
+        <h3>Starter Templates</h3>
+        <p>Next.js, Express, and Stripe integration examples.</p>
+        <code>3 ready-to-use projects</code>
+        <span class="eco-link">Browse templates &rarr;</span>
+      </a>
+
+      <a class="eco-card" href="https://vericorp-comparisons.pages.dev" target="_blank" rel="noopener">
+        <div class="eco-icon">&#128200;</div>
+        <h3>Comparisons</h3>
+        <p>See how VeriCorp compares to Textract, Mindee, Veryfi, and more.</p>
+        <code>7 detailed comparisons</code>
+        <span class="eco-link">View comparisons &rarr;</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Ready to work with European financial data?</h2>
+  <p>Start with a free tier. No credit card required.</p>
+  <div class="hero-buttons">
+    <a href="https://rapidapi.com/vericorp/api/vericorp-invoice-extract" class="btn btn-primary">Get Free API Key &rarr;</a>
+    <a href="/playground" class="btn btn-secondary">Try the Playground</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="nav-logo" style="margin-bottom:.25rem">
+        <img src="/VeriCorp_Logo_128x128.png" width="24" height="24" alt="VeriCorp" style="border-radius:4px">
+        Veri<span>Corp</span>
+      </div>
+      <p>EU-focused API suite for financial data. Invoice extraction, company verification, and document validation. Built on Cloudflare Workers.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Products</h4>
+      <a href="/products/invoice-extract">Invoice Extract</a>
+      <a href="/products/company-verify">Company Verify</a>
+      <a href="/products/doc-validate">Doc Validate</a>
+      <a href="/pricing">Pricing</a>
+    </div>
+    <div class="footer-col">
+      <h4>SDKs</h4>
+      <a href="https://www.npmjs.com/package/@vericorp/invoice-extract" target="_blank">JS SDK (Invoice)</a>
+      <a href="https://pypi.org/project/vericorp-invoice-extract/" target="_blank">Python SDK (Invoice)</a>
+      <a href="https://www.npmjs.com/package/vericorp" target="_blank">JS SDK (Company)</a>
+      <a href="https://pypi.org/project/vericorp/" target="_blank">Python SDK (Company)</a>
+    </div>
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <a href="/playground">Playground</a>
+      <a href="https://github.com/vericorptest-collab/vericorp-postman" target="_blank">Postman Collection</a>
+      <a href="https://www.npmjs.com/package/eu-iban-validator" target="_blank">IBAN Validator</a>
+      <a href="https://www.npmjs.com/package/eu-tax-id-validator" target="_blank">Tax ID Validator</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="https://rapidapi.com/vericorptestcollab/api/vericorp" target="_blank">RapidAPI</a>
+      <a href="https://github.com/vericorptest-collab" target="_blank">GitHub</a>
+      <a href="https://vericorp-checker.pages.dev" target="_blank">Free VAT Checker</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 VeriCorp. All rights reserved.</span>
+    <span>No cookies. No tracking. Built on Cloudflare edge.</span>
+  </div>
+</footer>
+
+<script src="/assets/js/nav.js"></script>
+</body>
+</html>

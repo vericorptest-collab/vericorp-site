@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing — VeriCorp API Suite</title>
+<meta name="description" content="Transparent pricing for VeriCorp APIs. Company Verify from free, Invoice Extract from free. No feature gating, all tiers include everything.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <img src="/VeriCorp_Logo_128x128.png" width="24" height="24" alt="VeriCorp" style="border-radius:4px">
+      Veri<span>Corp</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <div class="nav-dropdown">
+        <a class="nav-dropdown-trigger" style="color:var(--muted);font-size:.875rem;font-weight:500">Products</a>
+        <div class="nav-dropdown-menu">
+          <a href="/products/company-verify">Company Verify<small>VAT validation + enrichment for 28 EU countries</small></a>
+          <a href="/products/invoice-extract">Invoice Extract<small>OCR + AI extraction + NIF/IBAN validation</small></a>
+          <a href="/products/doc-validate" class="coming-soon">Doc Validate<small>IBAN, BIC, SEPA, NIF document validation</small></a>
+        </div>
+      </div>
+      <a href="/pricing" class="active">Pricing</a>
+      <a href="/playground">Playground</a>
+      <a href="https://rapidapi.com/vericorp/api/vericorp-invoice-extract" class="nav-cta">Get API Key</a>
+    </div>
+    <button class="nav-mobile" aria-label="Menu">&#9776;</button>
+  </div>
+</nav>
+
+<!-- PRICING -->
+<section class="section section-light section-center" style="padding-top:7rem">
+  <div class="section-inner">
+    <div class="section-label">Pricing</div>
+    <h1 class="section-title">Simple, transparent pricing</h1>
+    <p class="section-subtitle" style="margin-left:auto;margin-right:auto">Start free. Scale as you grow. Each product has its own subscription.</p>
+
+    <!-- Toggle -->
+    <div class="pricing-toggle-wrap">
+      <div class="pricing-toggle" id="pricingToggle">
+        <button class="active" onclick="switchPricing('invoice')">Invoice Extract</button>
+        <button onclick="switchPricing('company')">Company Verify</button>
+      </div>
+    </div>
+
+    <!-- Invoice Extract Pricing -->
+    <div class="pricing-panel active" id="pricing-invoice">
+      <div class="pricing-grid">
+        <div class="price-card">
+          <h3>Free</h3>
+          <div class="price">&euro;0 <span>/month</span></div>
+          <div class="reqs">25 extractions/month</div>
+          <ul>
+            <li>NIF/VAT validation</li>
+            <li>IBAN verification</li>
+            <li>Quality detection</li>
+            <li>2 req/hour</li>
+          </ul>
+          <a href="https://rapidapi.com/vericorp/api/vericorp-invoice-extract" class="price-btn price-btn-secondary">Start Free</a>
+        </div>
+        <div class="price-card">
+          <h3>Basic</h3>
+          <div class="price">&euro;29 <span>/month</span></div>
+          <div class="reqs">300 extractions/month</div>
+          <ul>
+            <li>Everything in Free</li>
+            <li>10 req/hour</li>
+            <li>Email support</li>
+            <li>Multi-page PDFs</li>
+          </ul>
+          <a href="https://rapidapi.com/vericorp/api/vericorp-invoice-extract" class="price-btn price-btn-secondary">Get Basic</a>
+        </div>
+        <div class="price-card popular">
+          <h3>Pro</h3>
+          <div class="price">&euro;79 <span>/month</span></div>
+          <div class="reqs">1,500 extractions/month</div>
+          <ul>
+            <li>Everything in Basic</li>
+            <li>50 req/hour</li>
+            <li>Priority support</li>
+            <li>Webhook notifications</li>
+          </ul>
+          <a href="https://rapidapi.com/vericorp/api/vericorp-invoice-extract" class="price-btn price-btn-primary">Get Pro</a>
+        </div>
+        <div class="price-card">
+          <h3>Enterprise</h3>
+          <div class="price">&euro;249 <span>/month</span></div>
+          <div class="reqs">10,000 extractions/month</div>
+          <ul>
+            <li>Everything in Pro</li>
+            <li>200 req/hour</li>
+            <li>Dedicated support</li>
+            <li>SLA guarantee</li>
+          </ul>
+          <a href="https://rapidapi.com/vericorp/api/vericorp-invoice-extract" class="price-btn price-btn-secondary">Contact Us</a>
+        </div>
+      </div>
+      <p style="margin-top:1.5rem;color:#64748B;font-size:.85rem">Multi-page PDFs count as 1 extraction. No per-page charges. All tiers include full extraction + validation.</p>
+    </div>
+
+    <!-- Company Verify Pricing -->
+    <div class="pricing-panel" id="pricing-company" style="display:none">
+      <div class="pricing-grid">
+        <div class="price-card">
+          <h3>Free</h3>
+          <div class="price">&euro;0 <span>/month</span></div>
+          <div class="reqs">200 requests/month</div>
+          <ul>
+            <li>All 28 countries</li>
+            <li>Full enrichment</li>
+            <li>VAT validation</li>
+            <li>Community support</li>
+          </ul>
+          <a href="https://rapidapi.com/vericorptestcollab/api/vericorp" class="price-btn price-btn-secondary">Start Free</a>
+        </div>
+        <div class="price-card">
+          <h3>Starter</h3>
+          <div class="price">&euro;4.99 <span>/month</span></div>
+          <div class="reqs">1,000 requests/month</div>
+          <ul>
+            <li>Everything in Free</li>
+            <li>Batch API (10/req)</li>
+            <li>Priority support</li>
+            <li>Higher rate limits</li>
+          </ul>
+          <a href="https://rapidapi.com/vericorptestcollab/api/vericorp" class="price-btn price-btn-secondary">Get Starter</a>
+        </div>
+        <div class="price-card popular">
+          <h3>Pro</h3>
+          <div class="price">&euro;14.99 <span>/month</span></div>
+          <div class="reqs">5,000 requests/month</div>
+          <ul>
+            <li>Everything in Starter</li>
+            <li>Webhook notifications</li>
+            <li>Priority enrichment</li>
+            <li>Email support</li>
+          </ul>
+          <a href="https://rapidapi.com/vericorptestcollab/api/vericorp" class="price-btn price-btn-primary">Get Pro</a>
+        </div>
+        <div class="price-card">
+          <h3>Business</h3>
+          <div class="price">&euro;39.99 <span>/month</span></div>
+          <div class="reqs">25,000 requests/month</div>
+          <ul>
+            <li>Everything in Pro</li>
+            <li>Dedicated support</li>
+            <li>Custom rate limits</li>
+            <li>SLA guarantee</li>
+          </ul>
+          <a href="https://rapidapi.com/vericorptestcollab/api/vericorp" class="price-btn price-btn-secondary">Contact Us</a>
+        </div>
+      </div>
+      <p style="margin-top:1.5rem;color:#64748B;font-size:.85rem">All plans include every feature. No feature gating.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section section-light section-center" style="padding-top:0">
+  <div class="section-inner">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">Frequently asked questions</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">Can I mix plans across products?</div>
+        <div class="faq-answer"><p>Yes, each product has its own subscription on RapidAPI. You can have the Free tier on Company Verify and Pro on Invoice Extract, for example.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">How does the free tier work?</div>
+        <div class="faq-answer"><p>Sign up on RapidAPI and start making requests immediately. No credit card required. You get 25 invoice extractions or 200 company lookups per month for free.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">What happens when I hit the limit?</div>
+        <div class="faq-answer"><p>You'll receive a 429 error with a clear message and a Retry-After header. Upgrade your plan to continue, or wait for the next billing cycle.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">Do you charge per page or per API call?</div>
+        <div class="faq-answer"><p>Per API call. Multi-page PDFs count as 1 extraction. A 10-page invoice is the same price as a 1-page invoice.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">Is there a pay-as-you-go option?</div>
+        <div class="faq-answer"><p>Not yet. We're planning pay-as-you-go pricing for later in 2026. For now, choose the plan that fits your volume.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Ready to get started?</h2>
+  <p>Start with a free tier. No credit card required.</p>
+  <div class="hero-buttons">
+    <a href="https://rapidapi.com/vericorp/api/vericorp-invoice-extract" class="btn btn-primary">Get Free API Key &rarr;</a>
+    <a href="/playground" class="btn btn-secondary">Try the Playground</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="nav-logo" style="margin-bottom:.25rem">
+        <img src="/VeriCorp_Logo_128x128.png" width="24" height="24" alt="VeriCorp" style="border-radius:4px">
+        Veri<span>Corp</span>
+      </div>
+      <p>EU-focused API suite for financial data. Built on Cloudflare Workers.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Products</h4>
+      <a href="/products/invoice-extract">Invoice Extract</a>
+      <a href="/products/company-verify">Company Verify</a>
+      <a href="/products/doc-validate">Doc Validate</a>
+      <a href="/pricing">Pricing</a>
+    </div>
+    <div class="footer-col">
+      <h4>SDKs</h4>
+      <a href="https://www.npmjs.com/package/@vericorp/invoice-extract" target="_blank">JS SDK (Invoice)</a>
+      <a href="https://pypi.org/project/vericorp-invoice-extract/" target="_blank">Python SDK (Invoice)</a>
+      <a href="https://www.npmjs.com/package/vericorp" target="_blank">JS SDK (Company)</a>
+      <a href="https://pypi.org/project/vericorp/" target="_blank">Python SDK (Company)</a>
+    </div>
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <a href="/playground">Playground</a>
+      <a href="https://github.com/vericorptest-collab/vericorp-postman" target="_blank">Postman Collection</a>
+      <a href="https://www.npmjs.com/package/eu-iban-validator" target="_blank">IBAN Validator</a>
+      <a href="https://www.npmjs.com/package/eu-tax-id-validator" target="_blank">Tax ID Validator</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="https://rapidapi.com/vericorptestcollab/api/vericorp" target="_blank">RapidAPI</a>
+      <a href="https://github.com/vericorptest-collab" target="_blank">GitHub</a>
+      <a href="https://vericorp-checker.pages.dev" target="_blank">Free VAT Checker</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 VeriCorp. All rights reserved.</span>
+    <span>No cookies. No tracking. Built on Cloudflare edge.</span>
+  </div>
+</footer>
+
+<script src="/assets/js/nav.js"></script>
+<script>
+function switchPricing(product) {
+  document.querySelectorAll('.pricing-panel').forEach(function(p) { p.style.display = 'none'; });
+  document.querySelectorAll('.pricing-toggle button').forEach(function(b) { b.classList.remove('active'); });
+  var panel = document.getElementById('pricing-' + product);
+  if (panel) panel.style.display = 'block';
+  event.target.classList.add('active');
+}
+</script>
+</body>
+</html>

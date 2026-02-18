@@ -1,0 +1,99 @@
+{
+  "document_type": "invoice",
+  "confidence": 0.94,
+  "issuer": {
+    "name": "TechNova Solutions Lda.",
+    "tax_id": "PT516247893",
+    "tax_id_valid": true,
+    "tax_id_country": "PT",
+    "address": "Rua Augusta 274, 3º Esq, 1100-053 Lisboa, Portugal",
+    "iban": "PT50003506440000000769054",
+    "iban_valid": true,
+    "iban_formatted": "PT50 0035 0644 0000 0007 6905 4",
+    "bank_name": "Caixa Geral de Depósitos",
+    "bank_bic": "CGDIPTPL"
+  },
+  "recipient": {
+    "name": "Grupo Almeida & Filhos S.A.",
+    "tax_id": "PT509876543",
+    "tax_id_valid": true,
+    "tax_id_country": "PT",
+    "address": "Av. da Liberdade 110, 1250-146 Lisboa, Portugal",
+    "iban": null,
+    "iban_valid": null,
+    "iban_formatted": null,
+    "bank_name": null,
+    "bank_bic": null
+  },
+  "invoice_number": "FT 2024/00847",
+  "issue_date": "2024-11-15",
+  "due_date": "2024-12-15",
+  "currency": "EUR",
+  "line_items": [
+    {
+      "description": "Consultoria de desenvolvimento de software — Novembro 2024",
+      "quantity": 120,
+      "unit_price": 85.00,
+      "vat_rate": 23,
+      "amount": 10200.00,
+      "confidence": 0.96
+    },
+    {
+      "description": "Licenciamento mensal plataforma SaaS",
+      "quantity": 1,
+      "unit_price": 450.00,
+      "vat_rate": 23,
+      "amount": 450.00,
+      "confidence": 0.95
+    },
+    {
+      "description": "Alojamento cloud (3x instâncias)",
+      "quantity": 3,
+      "unit_price": 120.00,
+      "vat_rate": 23,
+      "amount": 360.00,
+      "confidence": 0.93
+    }
+  ],
+  "totals": {
+    "subtotal": 11010.00,
+    "vat_amount": 2532.30,
+    "total": 13542.30,
+    "vat_breakdown": [
+      { "rate": 23, "base": 11010.00, "amount": 2532.30 }
+    ],
+    "validation": {
+      "line_items_match": true,
+      "vat_match": true,
+      "total_match": true
+    }
+  },
+  "payment": {
+    "iban": "PT50003506440000000769054",
+    "iban_valid": true,
+    "iban_formatted": "PT50 0035 0644 0000 0007 6905 4",
+    "bank_name": "Caixa Geral de Depósitos",
+    "bank_bic": "CGDIPTPL",
+    "reference": "MB 21045 67890 12345",
+    "method": "bank_transfer"
+  },
+  "metadata": {
+    "model": "scout",
+    "neurons_used": 150,
+    "processing_time_ms": 2340,
+    "pages": 1,
+    "retries": 0,
+    "cached": false,
+    "file_hash": "a7f3b2c91e4d..."
+  },
+  "quality": {
+    "level": "high",
+    "width": null,
+    "height": null,
+    "estimated_dpi": null,
+    "file_type": "application/pdf",
+    "file_size": 245780,
+    "warning": null,
+    "issues": []
+  }
+}

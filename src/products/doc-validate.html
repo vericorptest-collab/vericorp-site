@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VeriCorp Doc Validate — IBAN, BIC, SEPA & NIF Document Validation API</title>
+<meta name="description" content="Validate financial identifiers in your documents. IBAN, BIC, SEPA references, NIF numbers — validate them all in bulk. Coming soon.">
+<meta property="og:title" content="VeriCorp Doc Validate — Document Validation API">
+<meta property="og:description" content="IBAN, BIC, SEPA references, NIF numbers — validate them all in bulk. Coming soon to the VeriCorp API suite.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vericorp.pages.dev/products/doc-validate">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <img src="/VeriCorp_Logo_128x128.png" width="24" height="24" alt="VeriCorp" style="border-radius:4px">
+      Veri<span>Corp</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <div class="nav-dropdown">
+        <a class="nav-dropdown-trigger" style="color:var(--muted);font-size:.875rem;font-weight:500">Products</a>
+        <div class="nav-dropdown-menu">
+          <a href="/products/company-verify">Company Verify<small>VAT validation + enrichment for 28 EU countries</small></a>
+          <a href="/products/invoice-extract">Invoice Extract<small>OCR + AI extraction + NIF/IBAN validation</small></a>
+          <a href="/products/doc-validate" class="active coming-soon">Doc Validate<small>IBAN, BIC, SEPA, NIF document validation</small></a>
+        </div>
+      </div>
+      <a href="/pricing">Pricing</a>
+      <a href="/playground">Playground</a>
+      <a href="https://rapidapi.com/vericorptestcollab/api/vericorp" class="nav-cta">Get API Key</a>
+    </div>
+    <button class="nav-mobile" aria-label="Menu">&#9776;</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="padding-bottom:3rem">
+  <div class="hero-badge" style="background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.25);color:#FBBF24">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="#FBBF24"/></svg>
+    Coming Soon
+  </div>
+  <h1>Validate financial identifiers<br><span class="gradient">in your documents.</span></h1>
+  <p>IBAN, BIC, SEPA references, NIF numbers &mdash; validate them all in bulk. Upload a document or paste a list. Get validation results instantly.</p>
+  <div class="hero-buttons">
+    <a href="https://rapidapi.com/vericorptestcollab/api/vericorp" class="btn btn-primary">Notify Me on RapidAPI &rarr;</a>
+    <a href="/products/company-verify" class="btn btn-secondary">Try Company Verify</a>
+  </div>
+</section>
+
+<!-- FEATURE PREVIEW -->
+<section class="section section-light section-center">
+  <div class="section-inner">
+    <div class="section-label">Feature Preview</div>
+    <h2 class="section-title">What's coming</h2>
+    <p class="section-subtitle">A single endpoint to validate every financial identifier in your documents.</p>
+    <div class="features-grid" style="grid-template-columns:repeat(2,1fr);max-width:800px;margin:0 auto">
+
+      <div class="feature-card">
+        <div class="feature-icon" style="background:rgba(16,185,129,.1);color:var(--verified)">&#127974;</div>
+        <h3>IBAN Validation</h3>
+        <p>MOD-97 checksum verification, country-specific length checks, bank code identification, and BIC enrichment for 80+ countries.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon" style="background:rgba(59,130,246,.1);color:var(--accent)">&#10003;</div>
+        <h3>NIF/VAT Validation</h3>
+        <p>Checksum validation for 30 European countries. Structural format checks, country prefix detection, and VIES cross-reference.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon" style="background:rgba(6,182,212,.1);color:var(--teal)">&#8644;</div>
+        <h3>Bulk Processing</h3>
+        <p>Submit hundreds of identifiers in a single request. CSV, JSON, or plain text input. Parallel validation with per-item results.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon" style="background:rgba(245,158,11,.1);color:var(--gold)">&#128196;</div>
+        <h3>Document Upload</h3>
+        <p>Upload PDFs, spreadsheets, or text files. Auto-detect IBANs, VAT numbers, and SEPA references. Extract and validate in one step.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Be the first to know when Doc Validate launches.</h2>
+  <p>Follow VeriCorp on RapidAPI to get notified. In the meantime, try our other products.</p>
+  <div class="hero-buttons">
+    <a href="https://rapidapi.com/vericorptestcollab/api/vericorp" class="btn btn-primary">Follow on RapidAPI &rarr;</a>
+    <a href="/products/invoice-extract" class="btn btn-secondary">Try Invoice Extract</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="nav-logo" style="margin-bottom:.25rem">
+        <img src="/VeriCorp_Logo_128x128.png" width="24" height="24" alt="VeriCorp" style="border-radius:4px">
+        Veri<span>Corp</span>
+      </div>
+      <p>EU-focused API suite for financial data. Invoice extraction, company verification, and document validation. Built on Cloudflare Workers.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Products</h4>
+      <a href="/products/company-verify">Company Verify</a>
+      <a href="/products/invoice-extract">Invoice Extract</a>
+      <a href="/products/doc-validate">Doc Validate</a>
+      <a href="/pricing">Pricing</a>
+    </div>
+    <div class="footer-col">
+      <h4>SDKs</h4>
+      <a href="https://www.npmjs.com/package/vericorp" target="_blank">JS SDK (Company)</a>
+      <a href="https://pypi.org/project/vericorp/" target="_blank">Python SDK (Company)</a>
+      <a href="https://www.npmjs.com/package/@vericorp/invoice-extract" target="_blank">JS SDK (Invoice)</a>
+      <a href="https://pypi.org/project/vericorp-invoice-extract/" target="_blank">Python SDK (Invoice)</a>
+    </div>
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <a href="/playground">Playground</a>
+      <a href="https://github.com/vericorptest-collab/vericorp-postman" target="_blank">Postman Collection</a>
+      <a href="https://www.npmjs.com/package/eu-iban-validator" target="_blank">IBAN Validator</a>
+      <a href="https://www.npmjs.com/package/eu-tax-id-validator" target="_blank">Tax ID Validator</a>
+    </div>
+    <div class="footer-col">
+      <h4>Integrations</h4>
+      <a href="https://rapidapi.com/vericorptestcollab/api/vericorp" target="_blank">RapidAPI</a>
+      <a href="https://github.com/vericorptest-collab/vericorp-mcp-server" target="_blank">MCP Server</a>
+      <a href="https://github.com/vericorptest-collab/validate-vat" target="_blank">GitHub Action</a>
+      <a href="https://github.com/vericorptest-collab" target="_blank">GitHub</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 VeriCorp. All rights reserved.</span>
+    <span>No cookies. No tracking. Built on Cloudflare edge.</span>
+  </div>
+</footer>
+
+<script src="/assets/js/nav.js"></script>
+</body>
+</html>

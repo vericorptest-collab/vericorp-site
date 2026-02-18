@@ -1,0 +1,91 @@
+{
+  "document_type": "invoice",
+  "confidence": 0.92,
+  "issuer": {
+    "name": "Diseño Digital Barcelona S.L.",
+    "tax_id": "ESB65432198",
+    "tax_id_valid": true,
+    "tax_id_country": "ES",
+    "address": "Carrer de Provença 214, 08036 Barcelona, España",
+    "iban": "ES9121000418450200051332",
+    "iban_valid": true,
+    "iban_formatted": "ES91 2100 0418 4502 0005 1332",
+    "bank_name": "CaixaBank",
+    "bank_bic": "CAIXESBBXXX"
+  },
+  "recipient": {
+    "name": "Schmidt & Weber GmbH",
+    "tax_id": "DE298765432",
+    "tax_id_valid": true,
+    "tax_id_country": "DE",
+    "address": "Friedrichstraße 43, 10117 Berlin, Deutschland",
+    "iban": null,
+    "iban_valid": null,
+    "iban_formatted": null,
+    "bank_name": null,
+    "bank_bic": null
+  },
+  "invoice_number": "FAC-2024-1592",
+  "issue_date": "2024-10-28",
+  "due_date": "2024-11-28",
+  "currency": "EUR",
+  "line_items": [
+    {
+      "description": "Diseño UI/UX — Proyecto Webshop Q4",
+      "quantity": 80,
+      "unit_price": 95.00,
+      "vat_rate": 21,
+      "amount": 7600.00,
+      "confidence": 0.94
+    },
+    {
+      "description": "Desarrollo frontend React",
+      "quantity": 160,
+      "unit_price": 75.00,
+      "vat_rate": 21,
+      "amount": 12000.00,
+      "confidence": 0.93
+    }
+  ],
+  "totals": {
+    "subtotal": 19600.00,
+    "vat_amount": 4116.00,
+    "total": 23716.00,
+    "vat_breakdown": [
+      { "rate": 21, "base": 19600.00, "amount": 4116.00 }
+    ],
+    "validation": {
+      "line_items_match": true,
+      "vat_match": true,
+      "total_match": true
+    }
+  },
+  "payment": {
+    "iban": "ES9121000418450200051332",
+    "iban_valid": true,
+    "iban_formatted": "ES91 2100 0418 4502 0005 1332",
+    "bank_name": "CaixaBank",
+    "bank_bic": "CAIXESBBXXX",
+    "reference": null,
+    "method": "bank_transfer"
+  },
+  "metadata": {
+    "model": "scout",
+    "neurons_used": 150,
+    "processing_time_ms": 1870,
+    "pages": 1,
+    "retries": 0,
+    "cached": false,
+    "file_hash": "c4e8f1a73b2d..."
+  },
+  "quality": {
+    "level": "high",
+    "width": null,
+    "height": null,
+    "estimated_dpi": null,
+    "file_type": "application/pdf",
+    "file_size": 198450,
+    "warning": null,
+    "issues": []
+  }
+}

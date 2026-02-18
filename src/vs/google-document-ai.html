@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VeriCorp vs Google Document AI — EU Invoice Extraction API Comparison</title>
+<meta name="description" content="Compare VeriCorp Invoice Extract with Google Document AI. Single endpoint vs multi-step GCP workflow, built-in NIF/VAT + IBAN validation, no GCP account needed.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <img src="/VeriCorp_Logo_128x128.png" width="24" height="24" alt="VeriCorp" style="border-radius:4px">
+      Veri<span>Corp</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <div class="nav-dropdown">
+        <a class="nav-dropdown-trigger" style="color:var(--muted);font-size:.875rem;font-weight:500">Products</a>
+        <div class="nav-dropdown-menu">
+          <a href="/products/company-verify">Company Verify<small>VAT validation + enrichment for 28 EU countries</small></a>
+          <a href="/products/invoice-extract">Invoice Extract<small>OCR + AI extraction + NIF/IBAN validation</small></a>
+          <a href="/products/doc-validate" class="coming-soon">Doc Validate<small>IBAN, BIC, SEPA, NIF document validation</small></a>
+        </div>
+      </div>
+      <a href="/pricing">Pricing</a>
+      <a href="/playground">Playground</a>
+      <a href="https://rapidapi.com/vericorp/api/vericorp-invoice-extract" class="nav-cta">Get API Key</a>
+    </div>
+    <button class="nav-mobile" aria-label="Menu">&#9776;</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="vs-hero">
+  <div class="hero-badge">Comparison</div>
+  <h1>VeriCorp vs <span class="gradient">Google Document AI</span></h1>
+  <p>Single endpoint with NIF/IBAN validation vs multi-step GCP workflow. No Google Cloud account needed. See the full comparison.</p>
+</section>
+
+<!-- COMPARISON TABLE -->
+<section class="section section-light section-center" style="padding-top:0">
+  <div class="section-inner">
+    <div class="comparison-wrapper">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Google Document AI</th>
+            <th class="vc-col">VeriCorp Invoice Extract</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Price / page</td><td>$0.01</td><td class="vc-col" style="font-weight:700;color:var(--accent)">&euro;0.025&ndash;0.097</td></tr>
+          <tr><td>Free tier</td><td><span class="cross">&#10007;</span></td><td class="vc-col"><span class="check">&#10003;</span> 25/mo</td></tr>
+          <tr><td>NIF/VAT validation</td><td><span class="cross">&#10007;</span></td><td class="vc-col"><span class="check">&#10003;</span> 28 countries</td></tr>
+          <tr><td>IBAN validation</td><td><span class="cross">&#10007;</span></td><td class="vc-col"><span class="check">&#10003;</span> MOD-97</td></tr>
+          <tr><td>Single endpoint</td><td><span class="cross">&#10007;</span> Multi-step SDK</td><td class="vc-col"><span class="check">&#10003;</span> One POST</td></tr>
+          <tr><td>Structured invoice JSON</td><td><span class="partial">Partial</span></td><td class="vc-col"><span class="check">&#10003;</span> Full schema</td></tr>
+          <tr><td>Confidence per field</td><td><span class="check">&#10003;</span></td><td class="vc-col"><span class="check">&#10003;</span></td></tr>
+          <tr><td>Image quality handling</td><td><span class="cross">&#10007;</span></td><td class="vc-col"><span class="check">&#10003;</span> Adaptive prompts</td></tr>
+          <tr><td>EU invoice focus</td><td><span class="cross">&#10007;</span></td><td class="vc-col"><span class="check">&#10003;</span></td></tr>
+          <tr><td>Setup required</td><td>GCP account + project + processor</td><td class="vc-col">RapidAPI key only</td></tr>
+          <tr><td>Batch processing</td><td><span class="check">&#10003;</span></td><td class="vc-col"><span class="cross">&#10007;</span></td></tr>
+          <tr><td>RapidAPI marketplace</td><td><span class="cross">&#10007;</span></td><td class="vc-col"><span class="check">&#10003;</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- WHERE VERICORP WINS -->
+<section class="section section-center">
+  <div class="section-inner">
+    <div class="vs-grid">
+      <div class="vs-card vc-card">
+        <h3><span style="color:var(--verified)">&#10003;</span> Where VeriCorp wins</h3>
+        <ul>
+          <li><span class="check">&#10003;</span> Single endpoint — no GCP project, processor, or SDK setup</li>
+          <li><span class="check">&#10003;</span> Built-in NIF/VAT checksum for 28 EU countries</li>
+          <li><span class="check">&#10003;</span> IBAN MOD-97 verification + bank BIC lookup</li>
+          <li><span class="check">&#10003;</span> Available on RapidAPI marketplace</li>
+          <li><span class="check">&#10003;</span> EU invoice specialist — understands European formats</li>
+          <li><span class="check">&#10003;</span> Adaptive image quality handling</li>
+          <li><span class="check">&#10003;</span> Free tier with 25 extractions/month</li>
+        </ul>
+      </div>
+      <div class="vs-card">
+        <h3>Where Google Document AI wins</h3>
+        <ul>
+          <li><span class="check">&#10003;</span> Broader document support (forms, contracts, receipts)</li>
+          <li><span class="check">&#10003;</span> Custom processors for non-standard documents</li>
+          <li><span class="check">&#10003;</span> Google Cloud ecosystem integration</li>
+          <li><span class="check">&#10003;</span> Batch processing for large volumes</li>
+          <li><span class="check">&#10003;</span> Lower cost at very high volumes ($0.01/page)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CODE COMPARISON -->
+<section class="section section-light">
+  <div class="section-inner" style="max-width:900px">
+    <div class="section-label">Code Comparison</div>
+    <h2 class="section-title" style="margin-bottom:2rem">VeriCorp: 3 lines. Google Doc AI: SDK + processor setup.</h2>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem">
+      <div>
+        <h3 style="color:var(--accent);font-size:.85rem;font-weight:700;margin-bottom:.75rem;text-transform:uppercase;letter-spacing:.05em">VeriCorp</h3>
+        <div class="code-section">
+          <div class="code-block active" style="display:block">
+<pre><span class="kw">curl</span> -X POST <span class="str">".../v1/extract"</span> \
+  -H <span class="str">"X-RapidAPI-Key: KEY"</span> \
+  -F <span class="str">"file=@invoice.pdf"</span>
+
+<span class="cm">// Done. Full JSON response.</span></pre>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h3 style="color:var(--muted);font-size:.85rem;font-weight:700;margin-bottom:.75rem;text-transform:uppercase;letter-spacing:.05em">Google Document AI</h3>
+        <div class="code-section">
+          <div class="code-block active" style="display:block">
+<pre><span class="cm">// 1. Create GCP project</span>
+<span class="cm">// 2. Enable Document AI API</span>
+<span class="cm">// 3. Create processor</span>
+
+<span class="kw">from</span> google.cloud <span class="kw">import</span> documentai
+client = documentai.DocumentProcessorServiceClient()
+result = client.process_document(
+  name=<span class="str">"projects/.../processors/..."</span>,
+  raw_document={...}
+)
+
+<span class="cm">// 4. Parse entities yourself</span>
+<span class="cm">// 5. No NIF/IBAN validation</span></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Skip the GCP setup. Start extracting in 5 minutes.</h2>
+  <p>One endpoint, one API key, NIF + IBAN validated JSON. No Google Cloud account required.</p>
+  <div class="hero-buttons">
+    <a href="https://rapidapi.com/vericorp/api/vericorp-invoice-extract" class="btn btn-primary">Try VeriCorp Free &rarr;</a>
+    <a href="/playground" class="btn btn-secondary">See it in action</a>
+  </div>
+</section>
+
+<!-- OTHER COMPARISONS -->
+<section class="section section-center" style="padding-top:0">
+  <div class="section-inner">
+    <p style="color:var(--muted);font-size:.9rem;margin-bottom:1rem">Other comparisons:</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+      <a href="/vs/aws-textract" class="btn btn-secondary" style="padding:.5rem 1rem;font-size:.8rem">vs AWS Textract</a>
+      <a href="/vs/mindee" class="btn btn-secondary" style="padding:.5rem 1rem;font-size:.8rem">vs Mindee</a>
+      <a href="/vs/veryfi" class="btn btn-secondary" style="padding:.5rem 1rem;font-size:.8rem">vs Veryfi</a>
+      <a href="/vs/azure-form-recognizer" class="btn btn-secondary" style="padding:.5rem 1rem;font-size:.8rem">vs Azure Form Recognizer</a>
+      <a href="/vs/nanonets" class="btn btn-secondary" style="padding:.5rem 1rem;font-size:.8rem">vs Nanonets</a>
+      <a href="/vs/rossum" class="btn btn-secondary" style="padding:.5rem 1rem;font-size:.8rem">vs Rossum</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="nav-logo" style="margin-bottom:.25rem">
+        <img src="/VeriCorp_Logo_128x128.png" width="24" height="24" alt="VeriCorp" style="border-radius:4px">
+        Veri<span>Corp</span>
+      </div>
+      <p>EU-focused API suite for financial data. Built on Cloudflare Workers.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Products</h4>
+      <a href="/products/invoice-extract">Invoice Extract</a>
+      <a href="/products/company-verify">Company Verify</a>
+      <a href="/pricing">Pricing</a>
+    </div>
+    <div class="footer-col">
+      <h4>Compare</h4>
+      <a href="/vs/aws-textract">vs AWS Textract</a>
+      <a href="/vs/mindee">vs Mindee</a>
+      <a href="/vs/google-document-ai">vs Google Doc AI</a>
+      <a href="/vs/veryfi">vs Veryfi</a>
+    </div>
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <a href="/playground">Playground</a>
+      <a href="https://www.npmjs.com/package/@vericorp/invoice-extract" target="_blank">JavaScript SDK</a>
+      <a href="https://pypi.org/project/vericorp-invoice-extract/" target="_blank">Python SDK</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="https://rapidapi.com/vericorp/api/vericorp-invoice-extract" target="_blank">RapidAPI</a>
+      <a href="https://github.com/vericorptest-collab" target="_blank">GitHub</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 VeriCorp. All rights reserved.</span>
+    <span>No cookies. No tracking. Built on Cloudflare edge.</span>
+  </div>
+</footer>
+
+<script src="/assets/js/nav.js"></script>
+</body>
+</html>
