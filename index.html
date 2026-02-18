@@ -18,7 +18,7 @@
   --navy:#0C1E3A;--deep:#142D55;--royal:#1E4D8C;
   --accent:#3B82F6;--electric:#60A5FA;--sky:#93C5FD;
   --teal:#06B6D4;--verified:#10B981;--gold:#F59E0B;--error:#EF4444;
-  --surface:#F8FAFC;--card:#FFFFFF;--border:#E2E8F0;--muted:#94A3B8;
+  --surface:#EBEEF2;--card:#FFFFFF;--border:#E2E8F0;--muted:#94A3B8;
   --font:'Plus Jakarta Sans',sans-serif;--mono:'JetBrains Mono',monospace;
 }
 html{scroll-behavior:smooth}
@@ -72,9 +72,7 @@ a:hover{color:var(--sky)}
 .section-center .section-subtitle{margin-left:auto;margin-right:auto}
 
 /* LIGHT SECTIONS */
-.section-light{background:var(--surface);position:relative}
-.section-light::before{content:'';position:absolute;top:0;left:0;right:0;height:80px;background:linear-gradient(180deg,var(--navy),var(--surface));pointer-events:none}
-.section-light::after{content:'';position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(180deg,var(--surface),var(--navy));pointer-events:none}
+.section-light{background:var(--surface)}
 .section-light .section-title{color:var(--navy)}
 .section-light .section-subtitle{color:#64748B}
 .section-light .section-label{color:var(--accent)}
