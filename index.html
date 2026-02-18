@@ -63,12 +63,19 @@ a:hover{color:var(--sky)}
 .trust-item svg{width:18px;height:18px;color:var(--verified)}
 
 /* SECTIONS */
-.section{max-width:1200px;margin:0 auto;padding:5rem 1.5rem}
+.section{padding:5rem 1.5rem}
+.section-inner{max-width:1200px;margin:0 auto}
 .section-label{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--teal);margin-bottom:.75rem}
 .section-title{font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:800;color:#fff;margin-bottom:1rem;letter-spacing:-.01em}
 .section-subtitle{color:var(--muted);font-size:1.05rem;max-width:600px;margin-bottom:3rem}
 .section-center{text-align:center}
 .section-center .section-subtitle{margin-left:auto;margin-right:auto}
+
+/* LIGHT SECTIONS */
+.section-light{background:var(--surface)}
+.section-light .section-title{color:var(--navy)}
+.section-light .section-subtitle{color:#64748B}
+.section-light .section-label{color:var(--accent)}
 
 /* HOW IT WORKS */
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
@@ -77,6 +84,10 @@ a:hover{color:var(--sky)}
 .step h3{color:#fff;font-size:1.1rem;font-weight:700;margin-bottom:.5rem}
 .step p{color:var(--muted);font-size:.9rem}
 .step code{background:rgba(59,130,246,.1);color:var(--electric);padding:.125rem .5rem;border-radius:4px;font-family:var(--mono);font-size:.8rem}
+.section-light .step{background:var(--card);border-color:var(--border);box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.section-light .step h3{color:var(--navy)}
+.section-light .step p{color:#64748B}
+.section-light .step code{background:rgba(59,130,246,.08);color:var(--accent)}
 
 /* FEATURES */
 .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
@@ -88,19 +99,19 @@ a:hover{color:var(--sky)}
 
 /* ECOSYSTEM */
 .eco-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem}
-.eco-card{padding:1.5rem;background:var(--deep);border-radius:14px;border:1px solid rgba(255,255,255,.06);transition:all .25s;display:flex;flex-direction:column;gap:.75rem}
-.eco-card:hover{border-color:rgba(6,182,212,.3);transform:translateY(-2px);background:rgba(20,45,85,.8)}
+.eco-card{padding:1.5rem;background:var(--card);border-radius:14px;border:1px solid var(--border);transition:all .25s;display:flex;flex-direction:column;gap:.75rem;color:var(--navy);text-decoration:none}
+.eco-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.08);color:var(--navy)}
 .eco-card .eco-icon{font-size:1.5rem}
-.eco-card h3{color:#fff;font-size:.95rem;font-weight:700}
-.eco-card p{color:var(--muted);font-size:.8rem;line-height:1.5;flex:1}
-.eco-card code{background:rgba(6,182,212,.1);color:var(--teal);padding:.2rem .5rem;border-radius:4px;font-family:var(--mono);font-size:.75rem;display:inline-block}
-.eco-card .eco-link{font-size:.8rem;font-weight:600;color:var(--teal);display:inline-flex;align-items:center;gap:.25rem;margin-top:auto}
-.eco-card .eco-link:hover{color:var(--electric)}
+.eco-card h3{color:var(--navy);font-size:.95rem;font-weight:700}
+.eco-card p{color:#64748B;font-size:.8rem;line-height:1.5;flex:1}
+.eco-card code{background:rgba(59,130,246,.08);color:var(--accent);padding:.2rem .5rem;border-radius:4px;font-family:var(--mono);font-size:.75rem;display:inline-block}
+.eco-card .eco-link{font-size:.8rem;font-weight:600;color:var(--accent);display:inline-flex;align-items:center;gap:.25rem;margin-top:auto}
+.eco-card:hover .eco-link{color:var(--electric)}
 
 /* CODE EXAMPLES */
 .code-section{background:var(--deep);border-radius:16px;border:1px solid rgba(255,255,255,.06);overflow:hidden}
 .code-tabs{display:flex;border-bottom:1px solid rgba(255,255,255,.06);overflow-x:auto}
-.code-tab{padding:.75rem 1.5rem;font-size:.85rem;font-weight:600;color:var(--muted);cursor:pointer;border:none;background:none;white-space:nowrap;transition:all .2s;border-bottom:2px solid transparent}
+.code-tab{padding:.75rem 1.5rem;font-size:.85rem;font-weight:600;color:var(--muted);cursor:pointer;border:none;background:none;white-space:nowrap;transition:all .2s;border-bottom:2px solid transparent;font-family:var(--font)}
 .code-tab:hover{color:#fff}
 .code-tab.active{color:var(--teal);border-bottom-color:var(--teal);background:rgba(6,182,212,.05)}
 .code-block{display:none;padding:1.5rem;overflow-x:auto}
@@ -135,28 +146,28 @@ a:hover{color:var(--sky)}
 .demo-samples{padding:.75rem 1.5rem;border-bottom:1px solid rgba(255,255,255,.06);display:flex;gap:.5rem;flex-wrap:wrap}
 .demo-sample{padding:.25rem .625rem;border-radius:6px;font-size:.75rem;font-family:var(--mono);background:rgba(255,255,255,.05);color:var(--muted);cursor:pointer;border:1px solid transparent;transition:all .2s}
 .demo-sample:hover{border-color:rgba(255,255,255,.15);color:#fff}
-.demo-output{padding:1.5rem;min-height:200px;font-family:var(--mono);font-size:.8rem;line-height:1.7;color:var(--verified);white-space:pre-wrap;word-break:break-word}
+.demo-output{padding:1.5rem;min-height:200px;font-family:var(--mono);font-size:.8rem;line-height:1.7;white-space:pre-wrap;word-break:break-word;background:var(--surface);color:#1E293B;border-radius:0 0 16px 16px}
 .demo-output .demo-cursor{display:inline-block;width:8px;height:14px;background:var(--accent);animation:blink 1s infinite}
 @keyframes blink{0%,50%{opacity:1}51%,100%{opacity:0}}
 
 /* PRICING */
 .pricing-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem}
-.price-card{padding:2rem;background:var(--deep);border-radius:16px;border:1px solid rgba(255,255,255,.06);display:flex;flex-direction:column;transition:all .25s}
-.price-card:hover{transform:translateY(-2px)}
-.price-card.popular{border-color:var(--accent);position:relative}
+.price-card{padding:2rem;background:var(--card);border-radius:16px;border:1px solid var(--border);display:flex;flex-direction:column;transition:all .25s;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.price-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.1)}
+.price-card.popular{border-color:var(--accent);box-shadow:0 4px 16px rgba(59,130,246,.15);position:relative}
 .price-card.popular::before{content:'Most Popular';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;font-size:.7rem;font-weight:700;padding:.25rem .875rem;border-radius:100px;white-space:nowrap}
-.price-card h3{color:#fff;font-size:1.1rem;font-weight:700;margin-bottom:.5rem}
-.price-card .price{font-size:2rem;font-weight:800;color:#fff;margin-bottom:.25rem}
-.price-card .price span{font-size:.9rem;font-weight:500;color:var(--muted)}
-.price-card .reqs{color:var(--muted);font-size:.85rem;margin-bottom:1.5rem}
+.price-card h3{color:var(--navy);font-size:1.1rem;font-weight:700;margin-bottom:.5rem}
+.price-card .price{font-size:2rem;font-weight:800;color:var(--navy);margin-bottom:.25rem}
+.price-card .price span{font-size:.9rem;font-weight:500;color:#64748B}
+.price-card .reqs{color:#64748B;font-size:.85rem;margin-bottom:1.5rem}
 .price-card ul{list-style:none;flex:1;margin-bottom:1.5rem}
-.price-card li{padding:.375rem 0;font-size:.85rem;color:#E2E8F0;display:flex;align-items:start;gap:.5rem}
+.price-card li{padding:.375rem 0;font-size:.85rem;color:#334155;display:flex;align-items:start;gap:.5rem}
 .price-card li::before{content:'✓';color:var(--verified);font-weight:700;flex-shrink:0}
 .price-card .price-btn{display:block;text-align:center;padding:.75rem;border-radius:10px;font-weight:600;font-size:.9rem;transition:all .2s}
 .price-btn-primary{background:var(--accent);color:#fff}
 .price-btn-primary:hover{background:var(--electric);color:#fff}
-.price-btn-secondary{background:rgba(255,255,255,.06);color:#fff;border:1px solid rgba(255,255,255,.1)}
-.price-btn-secondary:hover{background:rgba(255,255,255,.1);color:#fff}
+.price-btn-secondary{background:var(--surface);color:var(--navy);border:1px solid var(--border)}
+.price-btn-secondary:hover{background:var(--border);color:var(--navy)}
 
 /* USE CASES */
 .usecases-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem}
@@ -167,12 +178,12 @@ a:hover{color:var(--sky)}
 
 /* API DOCS */
 .api-endpoints{display:flex;flex-direction:column;gap:.75rem}
-.endpoint{display:flex;align-items:center;gap:1rem;padding:1rem 1.25rem;background:var(--deep);border-radius:10px;border:1px solid rgba(255,255,255,.06)}
+.endpoint{display:flex;align-items:center;gap:1rem;padding:1rem 1.25rem;background:var(--card);border-radius:10px;border:1px solid var(--border)}
 .method{padding:.25rem .625rem;border-radius:6px;font-family:var(--mono);font-size:.75rem;font-weight:700;min-width:52px;text-align:center}
-.method-get{background:rgba(16,185,129,.15);color:var(--verified)}
-.method-post{background:rgba(59,130,246,.15);color:var(--accent)}
-.endpoint .path{font-family:var(--mono);font-size:.875rem;color:#fff}
-.endpoint .desc{margin-left:auto;color:var(--muted);font-size:.8rem}
+.method-get{background:rgba(16,185,129,.12);color:#059669}
+.method-post{background:rgba(59,130,246,.12);color:var(--accent)}
+.endpoint .path{font-family:var(--mono);font-size:.875rem;color:var(--navy)}
+.endpoint .desc{margin-left:auto;color:#64748B;font-size:.8rem}
 
 /* CTA */
 .cta-section{text-align:center;padding:5rem 1.5rem;background:linear-gradient(180deg,transparent 0%,rgba(59,130,246,.05) 100%)}
@@ -229,7 +240,7 @@ a:hover{color:var(--sky)}
   </div>
 </nav>
 
-<!-- HERO -->
+<!-- HERO (dark) -->
 <section class="hero">
   <div class="hero-badge">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" fill="#F59E0B"/></svg>
@@ -271,161 +282,168 @@ a:hover{color:var(--sky)}
   </div>
 </div>
 
-<!-- HOW IT WORKS -->
-<section class="section section-center">
-  <div class="section-label">How It Works</div>
-  <h2 class="section-title">Three steps to verified data</h2>
-  <p class="section-subtitle">No scraping, no stale databases. VeriCorp queries official registries in real-time and caches results for 30 days.</p>
-  <div class="steps">
-    <div class="step">
-      <div class="step-num">1</div>
-      <h3>Send a tax ID</h3>
-      <p><code>GET /v1/company/PT502011378</code></p>
-    </div>
-    <div class="step">
-      <div class="step-num">2</div>
-      <h3>We query official sources</h3>
-      <p>VIES, Companies House, national registries &mdash; all in parallel at the edge.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">3</div>
-      <h3>Get enriched data</h3>
-      <p>Company name, address, legal form, directors, VAT status, activity codes &mdash; in one JSON response.</p>
+<!-- HOW IT WORKS (light) -->
+<section class="section section-light section-center">
+  <div class="section-inner">
+    <div class="section-label">How It Works</div>
+    <h2 class="section-title">Three steps to verified data</h2>
+    <p class="section-subtitle">No scraping, no stale databases. VeriCorp queries official registries in real-time and caches results for 30 days.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Send a tax ID</h3>
+        <p><code>GET /v1/company/PT502011378</code></p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>We query official sources</h3>
+        <p>VIES, Companies House, national registries &mdash; all in parallel at the edge.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Get enriched data</h3>
+        <p>Company name, address, legal form, directors, VAT status, activity codes &mdash; in one JSON response.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- FEATURES -->
+<!-- FEATURES (dark) -->
 <section class="section section-center" id="features">
-  <div class="section-label">Features</div>
-  <h2 class="section-title">Everything you need for KYB</h2>
-  <p class="section-subtitle">From VAT validation to full company enrichment, built for compliance teams and developers.</p>
-  <div class="features-grid">
-    <div class="feature-card">
-      <div class="feature-icon" style="background:rgba(16,185,129,.1);color:var(--verified)">&#10003;</div>
-      <h3>VAT Validation</h3>
-      <p>Real-time VIES validation for all EU member states. Confirm VAT numbers are active and registered.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon" style="background:rgba(59,130,246,.1);color:var(--accent)">&#9733;</div>
-      <h3>Rich Enrichment</h3>
-      <p>Company name, address, legal form, status, directors, PSC, activity codes from 8 national registries.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon" style="background:rgba(6,182,212,.1);color:var(--teal)">&#9672;</div>
-      <h3>28 Countries</h3>
-      <p>Full EU coverage plus UK, Norway, Switzerland. 8 countries with deep enrichment, 20 with VAT validation.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon" style="background:rgba(245,158,11,.1);color:var(--gold)">&#9889;</div>
-      <h3>Edge Performance</h3>
-      <p>Deployed on Cloudflare Workers across 300+ locations. Sub-200ms cached responses worldwide.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon" style="background:rgba(139,92,246,.1);color:#A78BFA">&#8644;</div>
-      <h3>Batch API</h3>
-      <p>Look up to 10 companies in a single request. Parallel processing, one response with all results.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon" style="background:rgba(236,72,153,.1);color:#F472B6">&#8635;</div>
-      <h3>Graceful Degradation</h3>
-      <p>If a source is down, VeriCorp returns partial data from other sources. You always get a response.</p>
+  <div class="section-inner">
+    <div class="section-label">Features</div>
+    <h2 class="section-title">Everything you need for KYB</h2>
+    <p class="section-subtitle">From VAT validation to full company enrichment, built for compliance teams and developers.</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon" style="background:rgba(16,185,129,.1);color:var(--verified)">&#10003;</div>
+        <h3>VAT Validation</h3>
+        <p>Real-time VIES validation for all EU member states. Confirm VAT numbers are active and registered.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:rgba(59,130,246,.1);color:var(--accent)">&#9733;</div>
+        <h3>Rich Enrichment</h3>
+        <p>Company name, address, legal form, status, directors, PSC, activity codes from 8 national registries.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:rgba(6,182,212,.1);color:var(--teal)">&#9672;</div>
+        <h3>28 Countries</h3>
+        <p>Full EU coverage plus UK, Norway, Switzerland. 8 countries with deep enrichment, 20 with VAT validation.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:rgba(245,158,11,.1);color:var(--gold)">&#9889;</div>
+        <h3>Edge Performance</h3>
+        <p>Deployed on Cloudflare Workers across 300+ locations. Sub-200ms cached responses worldwide.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:rgba(139,92,246,.1);color:#A78BFA">&#8644;</div>
+        <h3>Batch API</h3>
+        <p>Look up to 10 companies in a single request. Parallel processing, one response with all results.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:rgba(236,72,153,.1);color:#F472B6">&#8635;</div>
+        <h3>Graceful Degradation</h3>
+        <p>If a source is down, VeriCorp returns partial data from other sources. You always get a response.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ECOSYSTEM -->
-<section class="section section-center" id="ecosystem">
-  <div class="section-label">Ecosystem</div>
-  <h2 class="section-title">Use VeriCorp your way</h2>
-  <p class="section-subtitle">SDKs, tools and integrations for every workflow. All open-source.</p>
-  <div class="eco-grid">
+<!-- ECOSYSTEM (light) -->
+<section class="section section-light section-center" id="ecosystem">
+  <div class="section-inner">
+    <div class="section-label">Ecosystem</div>
+    <h2 class="section-title">Use VeriCorp your way</h2>
+    <p class="section-subtitle">SDKs, tools and integrations for every workflow. All open-source.</p>
+    <div class="eco-grid">
 
-    <a class="eco-card" href="https://www.npmjs.com/package/vericorp" target="_blank" rel="noopener">
-      <div class="eco-icon">&#128230;</div>
-      <h3>JavaScript SDK</h3>
-      <p>TypeScript-first, zero dependencies, retry with backoff, ESM + CJS.</p>
-      <code>npm install vericorp</code>
-      <span class="eco-link">View on npm &rarr;</span>
-    </a>
+      <a class="eco-card" href="https://www.npmjs.com/package/vericorp" target="_blank" rel="noopener">
+        <div class="eco-icon">&#128230;</div>
+        <h3>JavaScript SDK</h3>
+        <p>TypeScript-first, zero dependencies, retry with backoff, ESM + CJS.</p>
+        <code>npm install vericorp</code>
+        <span class="eco-link">View on npm &rarr;</span>
+      </a>
 
-    <a class="eco-card" href="https://pypi.org/project/vericorp/" target="_blank" rel="noopener">
-      <div class="eco-icon">&#128013;</div>
-      <h3>Python SDK</h3>
-      <p>Sync + async clients, Pydantic v2 models, httpx, full type hints.</p>
-      <code>pip install vericorp</code>
-      <span class="eco-link">View on PyPI &rarr;</span>
-    </a>
+      <a class="eco-card" href="https://pypi.org/project/vericorp/" target="_blank" rel="noopener">
+        <div class="eco-icon">&#128013;</div>
+        <h3>Python SDK</h3>
+        <p>Sync + async clients, Pydantic v2 models, httpx, full type hints.</p>
+        <code>pip install vericorp</code>
+        <span class="eco-link">View on PyPI &rarr;</span>
+      </a>
 
-    <a class="eco-card" href="https://vericorp-mcp-server.vericorptest.workers.dev/mcp" target="_blank" rel="noopener">
-      <div class="eco-icon">&#129302;</div>
-      <h3>MCP Server</h3>
-      <p>Use VeriCorp in Claude Desktop, Cursor, or any MCP client. 3 tools, free, no API key needed.</p>
-      <code>Add to claude_desktop_config.json</code>
-      <span class="eco-link">Setup guide &rarr;</span>
-    </a>
+      <a class="eco-card" href="https://github.com/vericorptest-collab/vericorp-mcp-server" target="_blank" rel="noopener">
+        <div class="eco-icon">&#129302;</div>
+        <h3>MCP Server</h3>
+        <p>Use VeriCorp in Claude Desktop, Cursor, or any MCP client. 3 tools, free, no API key needed.</p>
+        <code>Add to claude_desktop_config.json</code>
+        <span class="eco-link">Setup guide &rarr;</span>
+      </a>
 
-    <a class="eco-card" href="https://github.com/vericorptest-collab/validate-vat" target="_blank" rel="noopener">
-      <div class="eco-icon">&#9881;</div>
-      <h3>GitHub Action</h3>
-      <p>Validate VAT numbers in CI/CD pipelines. Fail builds on invalid VATs, markdown summary.</p>
-      <code>uses: vericorptest-collab/validate-vat@v1</code>
-      <span class="eco-link">View on GitHub &rarr;</span>
-    </a>
+      <a class="eco-card" href="https://github.com/vericorptest-collab/validate-vat" target="_blank" rel="noopener">
+        <div class="eco-icon">&#9881;</div>
+        <h3>GitHub Action</h3>
+        <p>Validate VAT numbers in CI/CD pipelines. Fail builds on invalid VATs, markdown summary.</p>
+        <code>uses: vericorptest-collab/validate-vat@v1</code>
+        <span class="eco-link">View on GitHub &rarr;</span>
+      </a>
 
-    <a class="eco-card" href="https://vericorp-checker-proxy.vericorptest.workers.dev" target="_blank" rel="noopener">
-      <div class="eco-icon">&#128269;</div>
-      <h3>Free VAT Checker</h3>
-      <p>Instant company lookup online. No login, no API key. Paste a VAT number and get results.</p>
-      <code>check.vericorp.dev</code>
-      <span class="eco-link">Open tool &rarr;</span>
-    </a>
+      <a class="eco-card" href="https://vericorp-checker.pages.dev" target="_blank" rel="noopener">
+        <div class="eco-icon">&#128269;</div>
+        <h3>Free VAT Checker</h3>
+        <p>Instant company lookup online. No login, no API key. Paste a VAT number and get results.</p>
+        <code>check.vericorp.dev</code>
+        <span class="eco-link">Open tool &rarr;</span>
+      </a>
 
-    <a class="eco-card" href="https://github.com/vericorptest-collab/vericorp-postman" target="_blank" rel="noopener">
-      <div class="eco-icon">&#128232;</div>
-      <h3>Postman Collection</h3>
-      <p>14 pre-built requests, test scripts, environment variables. Import and start testing.</p>
-      <code>Import collection JSON</code>
-      <span class="eco-link">Download &rarr;</span>
-    </a>
+      <a class="eco-card" href="https://github.com/vericorptest-collab/vericorp-postman" target="_blank" rel="noopener">
+        <div class="eco-icon">&#128232;</div>
+        <h3>Postman Collection</h3>
+        <p>14 pre-built requests, test scripts, environment variables. Import and start testing.</p>
+        <code>Import collection JSON</code>
+        <span class="eco-link">Download &rarr;</span>
+      </a>
 
-    <a class="eco-card" href="https://www.npmjs.com/package/eu-tax-id-validator" target="_blank" rel="noopener">
-      <div class="eco-icon">&#9989;</div>
-      <h3>Tax ID Validator</h3>
-      <p>Offline validation for 30 countries. Checksums, format checks, zero deps, &lt;5KB.</p>
-      <code>npm install eu-tax-id-validator</code>
-      <span class="eco-link">View on npm &rarr;</span>
-    </a>
+      <a class="eco-card" href="https://www.npmjs.com/package/eu-tax-id-validator" target="_blank" rel="noopener">
+        <div class="eco-icon">&#9989;</div>
+        <h3>Tax ID Validator</h3>
+        <p>Offline validation for 30 countries. Checksums, format checks, zero deps, &lt;5KB.</p>
+        <code>npm install eu-tax-id-validator</code>
+        <span class="eco-link">View on npm &rarr;</span>
+      </a>
 
-    <a class="eco-card" href="https://github.com/vericorptest-collab/vericorp-templates" target="_blank" rel="noopener">
-      <div class="eco-icon">&#128196;</div>
-      <h3>Starter Templates</h3>
-      <p>Next.js, Express, and Stripe integration examples. Copy, configure, and ship.</p>
-      <code>3 ready-to-use projects</code>
-      <span class="eco-link">Browse templates &rarr;</span>
-    </a>
+      <a class="eco-card" href="https://github.com/vericorptest-collab/vericorp-templates" target="_blank" rel="noopener">
+        <div class="eco-icon">&#128196;</div>
+        <h3>Starter Templates</h3>
+        <p>Next.js, Express, and Stripe integration examples. Copy, configure, and ship.</p>
+        <code>3 ready-to-use projects</code>
+        <span class="eco-link">Browse templates &rarr;</span>
+      </a>
 
+    </div>
   </div>
 </section>
 
-<!-- CODE EXAMPLES -->
+<!-- CODE EXAMPLES (dark) -->
 <section class="section">
-  <div class="section-label">Code Examples</div>
-  <h2 class="section-title" style="margin-bottom:2rem">Start in under a minute</h2>
-  <div class="code-section">
-    <div class="code-tabs">
-      <button class="code-tab active" onclick="showTab('curl')">cURL</button>
-      <button class="code-tab" onclick="showTab('js')">JavaScript</button>
-      <button class="code-tab" onclick="showTab('python')">Python</button>
-      <button class="code-tab" onclick="showTab('action')">GitHub Action</button>
-      <button class="code-tab" onclick="showTab('mcp')">MCP Config</button>
-    </div>
-    <div class="code-block active" id="tab-curl">
+  <div class="section-inner">
+    <div class="section-label">Code Examples</div>
+    <h2 class="section-title" style="margin-bottom:2rem">Start in under a minute</h2>
+    <div class="code-section">
+      <div class="code-tabs">
+        <button class="code-tab active" onclick="showTab('curl')">cURL</button>
+        <button class="code-tab" onclick="showTab('js')">JavaScript</button>
+        <button class="code-tab" onclick="showTab('python')">Python</button>
+        <button class="code-tab" onclick="showTab('action')">GitHub Action</button>
+        <button class="code-tab" onclick="showTab('mcp')">MCP Config</button>
+      </div>
+      <div class="code-block active" id="tab-curl">
 <pre><span class="kw">curl</span> <span class="str">"https://vericorp.p.rapidapi.com/v1/company/PT502011378"</span> \
   -H <span class="str">"X-RapidAPI-Key: YOUR_API_KEY"</span> \
   -H <span class="str">"X-RapidAPI-Host: vericorp.p.rapidapi.com"</span></pre>
-    </div>
-    <div class="code-block" id="tab-js">
+      </div>
+      <div class="code-block" id="tab-js">
 <pre><span class="kw">import</span> { VeriCorp } <span class="kw">from</span> <span class="str">'vericorp'</span>;
 
 <span class="kw">const</span> client = <span class="kw">new</span> <span class="fn">VeriCorp</span>(<span class="str">'YOUR_API_KEY'</span>);
@@ -437,8 +455,8 @@ console.<span class="fn">log</span>(company.status);  <span class="cm">// "activ
 <span class="cm">// VAT validation</span>
 <span class="kw">const</span> result = <span class="kw">await</span> client.<span class="fn">validate</span>(<span class="str">'DK10150817'</span>);
 console.<span class="fn">log</span>(result.valid);    <span class="cm">// true</span></pre>
-    </div>
-    <div class="code-block" id="tab-python">
+      </div>
+      <div class="code-block" id="tab-python">
 <pre><span class="kw">from</span> vericorp <span class="kw">import</span> VeriCorp
 
 client = <span class="fn">VeriCorp</span>(<span class="str">"YOUR_API_KEY"</span>)
@@ -452,8 +470,8 @@ company = client.<span class="fn">lookup</span>(<span class="str">"PT502011378"<
 
 <span class="kw">async</span> <span class="kw">with</span> <span class="fn">AsyncVeriCorp</span>(<span class="str">"YOUR_API_KEY"</span>) <span class="kw">as</span> client:
     company = <span class="kw">await</span> client.<span class="fn">lookup</span>(<span class="str">"PT502011378"</span>)</pre>
-    </div>
-    <div class="code-block" id="tab-action">
+      </div>
+      <div class="code-block" id="tab-action">
 <pre><span class="cm"># .github/workflows/validate.yml</span>
 <span class="kw">name</span>: Validate VAT Numbers
 <span class="kw">on</span>: [push]
@@ -470,8 +488,8 @@ company = client.<span class="fn">lookup</span>(<span class="str">"PT502011378"<
             GB12345678
           <span class="kw">api-key</span>: <span class="str">${{ secrets.VERICORP_API_KEY }}</span>
           <span class="kw">fail-on-invalid</span>: <span class="str">'true'</span></pre>
-    </div>
-    <div class="code-block" id="tab-mcp">
+      </div>
+      <div class="code-block" id="tab-mcp">
 <pre><span class="cm">// Claude Desktop: ~/.claude/claude_desktop_config.json</span>
 {
   <span class="str">"mcpServers"</span>: {
@@ -485,196 +503,207 @@ company = client.<span class="fn">lookup</span>(<span class="str">"PT502011378"<
 <span class="cm">// "Look up the company with VAT PT502011378"</span>
 <span class="cm">// "Is DK10150817 a valid VAT number?"</span>
 <span class="cm">// "What countries does VeriCorp support?"</span></pre>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- COUNTRIES -->
+<!-- COUNTRIES (dark) -->
 <section class="section section-center" id="countries">
-  <div class="section-label">Coverage</div>
-  <h2 class="section-title">28 European countries</h2>
-  <p class="section-subtitle">8 countries with deep enrichment from national registries. 20 countries with real-time VIES VAT validation.</p>
-  <div class="countries-legend">
-    <div class="legend-item"><div class="legend-dot green"></div> Enriched (registry data)</div>
-    <div class="legend-item"><div class="legend-dot blue"></div> VIES validation</div>
-  </div>
-  <div class="countries-grid">
-    <div class="country-pill enriched">&#127477;&#127481; Portugal</div>
-    <div class="country-pill enriched">&#127468;&#127463; United Kingdom</div>
-    <div class="country-pill enriched">&#127465;&#127472; Denmark</div>
-    <div class="country-pill enriched">&#127475;&#127476; Norway</div>
-    <div class="country-pill enriched">&#127467;&#127470; Finland</div>
-    <div class="country-pill enriched">&#127466;&#127466; Estonia</div>
-    <div class="country-pill enriched">&#127477;&#127473; Poland</div>
-    <div class="country-pill enriched">&#127464;&#127487; Czech Republic</div>
-    <div class="country-pill vies">&#127465;&#127466; Germany</div>
-    <div class="country-pill vies">&#127467;&#127479; France</div>
-    <div class="country-pill vies">&#127470;&#127481; Italy</div>
-    <div class="country-pill vies">&#127466;&#127480; Spain</div>
-    <div class="country-pill vies">&#127475;&#127473; Netherlands</div>
-    <div class="country-pill vies">&#127463;&#127466; Belgium</div>
-    <div class="country-pill vies">&#127462;&#127481; Austria</div>
-    <div class="country-pill vies">&#127470;&#127466; Ireland</div>
-    <div class="country-pill vies">&#127480;&#127466; Sweden</div>
-    <div class="country-pill vies">&#127479;&#127476; Romania</div>
-    <div class="country-pill vies">&#127469;&#127482; Hungary</div>
-    <div class="country-pill vies">&#127468;&#127479; Greece</div>
-    <div class="country-pill vies">&#127463;&#127468; Bulgaria</div>
-    <div class="country-pill vies">&#127469;&#127479; Croatia</div>
-    <div class="country-pill vies">&#127480;&#127472; Slovakia</div>
-    <div class="country-pill vies">&#127473;&#127481; Lithuania</div>
-    <div class="country-pill vies">&#127473;&#127483; Latvia</div>
-    <div class="country-pill vies">&#127480;&#127470; Slovenia</div>
-    <div class="country-pill vies">&#127473;&#127482; Luxembourg</div>
-    <div class="country-pill vies">&#127464;&#127486; Cyprus</div>
+  <div class="section-inner">
+    <div class="section-label">Coverage</div>
+    <h2 class="section-title">28 European countries</h2>
+    <p class="section-subtitle">8 countries with deep enrichment from national registries. 20 countries with real-time VIES VAT validation.</p>
+    <div class="countries-legend">
+      <div class="legend-item"><div class="legend-dot green"></div> Enriched (registry data)</div>
+      <div class="legend-item"><div class="legend-dot blue"></div> VIES validation</div>
+    </div>
+    <div class="countries-grid">
+      <div class="country-pill enriched">🇵🇹 Portugal</div>
+      <div class="country-pill enriched">🇬🇧 United Kingdom</div>
+      <div class="country-pill enriched">🇩🇰 Denmark</div>
+      <div class="country-pill enriched">🇳🇴 Norway</div>
+      <div class="country-pill enriched">🇫🇮 Finland</div>
+      <div class="country-pill enriched">🇪🇪 Estonia</div>
+      <div class="country-pill enriched">🇵🇱 Poland</div>
+      <div class="country-pill enriched">🇨🇿 Czech Republic</div>
+      <div class="country-pill vies">🇩🇪 Germany</div>
+      <div class="country-pill vies">🇫🇷 France</div>
+      <div class="country-pill vies">🇮🇹 Italy</div>
+      <div class="country-pill vies">🇪🇸 Spain</div>
+      <div class="country-pill vies">🇳🇱 Netherlands</div>
+      <div class="country-pill vies">🇧🇪 Belgium</div>
+      <div class="country-pill vies">🇦🇹 Austria</div>
+      <div class="country-pill vies">🇮🇪 Ireland</div>
+      <div class="country-pill vies">🇸🇪 Sweden</div>
+      <div class="country-pill vies">🇷🇴 Romania</div>
+      <div class="country-pill vies">🇭🇺 Hungary</div>
+      <div class="country-pill vies">🇬🇷 Greece</div>
+      <div class="country-pill vies">🇧🇬 Bulgaria</div>
+      <div class="country-pill vies">🇭🇷 Croatia</div>
+      <div class="country-pill vies">🇸🇰 Slovakia</div>
+      <div class="country-pill vies">🇱🇹 Lithuania</div>
+      <div class="country-pill vies">🇱🇻 Latvia</div>
+      <div class="country-pill vies">🇸🇮 Slovenia</div>
+      <div class="country-pill vies">🇱🇺 Luxembourg</div>
+      <div class="country-pill vies">🇨🇾 Cyprus</div>
+    </div>
   </div>
 </section>
 
-<!-- LIVE DEMO -->
+<!-- LIVE DEMO (dark) -->
 <section class="section section-center" id="demo">
-  <div class="section-label">Live Demo</div>
-  <h2 class="section-title">Try it now</h2>
-  <p class="section-subtitle">Enter a European tax ID and see real API response data. No signup required.</p>
-  <div class="demo-box">
-    <div class="demo-header">
-      <input type="text" class="demo-input" id="demoInput" placeholder="Enter tax ID (e.g. PT502011378)" onkeydown="if(event.key==='Enter')runDemo()">
-      <button class="demo-btn" id="demoBtn" onclick="runDemo()">Look up</button>
-    </div>
-    <div class="demo-samples">
-      <span class="demo-sample" onclick="setDemo('PT502011378')">PT502011378</span>
-      <span class="demo-sample" onclick="setDemo('DK10150817')">DK10150817</span>
-      <span class="demo-sample" onclick="setDemo('NO923609016')">NO923609016</span>
-      <span class="demo-sample" onclick="setDemo('CZ00075370')">CZ00075370</span>
-    </div>
-    <div class="demo-output" id="demoOutput"><span style="color:var(--muted)">// Response will appear here...</span></div>
-  </div>
-</section>
-
-<!-- PRICING -->
-<section class="section section-center" id="pricing">
-  <div class="section-label">Pricing</div>
-  <h2 class="section-title">Simple, transparent pricing</h2>
-  <p class="section-subtitle">Start free. Scale as you grow. All plans include every feature.</p>
-  <div class="pricing-grid">
-    <div class="price-card">
-      <h3>Free</h3>
-      <div class="price">&euro;0 <span>/month</span></div>
-      <div class="reqs">200 requests/month</div>
-      <ul>
-        <li>All 28 countries</li>
-        <li>Full enrichment</li>
-        <li>VAT validation</li>
-        <li>Community support</li>
-      </ul>
-      <a href="https://rapidapi.com/vericorptestcollab/api/vericorp" class="price-btn price-btn-secondary">Start Free</a>
-    </div>
-    <div class="price-card">
-      <h3>Starter</h3>
-      <div class="price">&euro;4.99 <span>/month</span></div>
-      <div class="reqs">1,000 requests/month</div>
-      <ul>
-        <li>Everything in Free</li>
-        <li>Batch API (10/req)</li>
-        <li>Priority support</li>
-        <li>Higher rate limits</li>
-      </ul>
-      <a href="https://rapidapi.com/vericorptestcollab/api/vericorp" class="price-btn price-btn-secondary">Get Started</a>
-    </div>
-    <div class="price-card popular">
-      <h3>Pro</h3>
-      <div class="price">&euro;14.99 <span>/month</span></div>
-      <div class="reqs">5,000 requests/month</div>
-      <ul>
-        <li>Everything in Starter</li>
-        <li>Webhook notifications</li>
-        <li>Priority enrichment</li>
-        <li>Email support</li>
-      </ul>
-      <a href="https://rapidapi.com/vericorptestcollab/api/vericorp" class="price-btn price-btn-primary">Get Pro</a>
-    </div>
-    <div class="price-card">
-      <h3>Business</h3>
-      <div class="price">&euro;39.99 <span>/month</span></div>
-      <div class="reqs">25,000 requests/month</div>
-      <ul>
-        <li>Everything in Pro</li>
-        <li>Dedicated support</li>
-        <li>Custom rate limits</li>
-        <li>SLA guarantee</li>
-      </ul>
-      <a href="https://rapidapi.com/vericorptestcollab/api/vericorp" class="price-btn price-btn-secondary">Contact Us</a>
+  <div class="section-inner">
+    <div class="section-label">Live Demo</div>
+    <h2 class="section-title">Try it now</h2>
+    <p class="section-subtitle">Enter a European tax ID and see real API response data. No signup required.</p>
+    <div class="demo-box">
+      <div class="demo-header">
+        <input type="text" class="demo-input" id="demoInput" placeholder="Enter tax ID (e.g. PT502011378)" onkeydown="if(event.key==='Enter')runDemo()">
+        <button class="demo-btn" id="demoBtn" onclick="runDemo()">Look up</button>
+      </div>
+      <div class="demo-samples">
+        <span class="demo-sample" onclick="setDemo('PT502011378')">PT502011378</span>
+        <span class="demo-sample" onclick="setDemo('DK10150817')">DK10150817</span>
+        <span class="demo-sample" onclick="setDemo('NO923609016')">NO923609016</span>
+        <span class="demo-sample" onclick="setDemo('CZ00075370')">CZ00075370</span>
+      </div>
+      <div class="demo-output" id="demoOutput"><span style="color:#94A3B8">// Response will appear here...</span></div>
     </div>
   </div>
 </section>
 
-<!-- USE CASES -->
+<!-- PRICING (light) -->
+<section class="section section-light section-center" id="pricing">
+  <div class="section-inner">
+    <div class="section-label">Pricing</div>
+    <h2 class="section-title">Simple, transparent pricing</h2>
+    <p class="section-subtitle">Start free. Scale as you grow. All plans include every feature.</p>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <h3>Free</h3>
+        <div class="price">&euro;0 <span>/month</span></div>
+        <div class="reqs">200 requests/month</div>
+        <ul>
+          <li>All 28 countries</li>
+          <li>Full enrichment</li>
+          <li>VAT validation</li>
+          <li>Community support</li>
+        </ul>
+        <a href="https://rapidapi.com/vericorptestcollab/api/vericorp" class="price-btn price-btn-secondary">Start Free</a>
+      </div>
+      <div class="price-card">
+        <h3>Starter</h3>
+        <div class="price">&euro;4.99 <span>/month</span></div>
+        <div class="reqs">1,000 requests/month</div>
+        <ul>
+          <li>Everything in Free</li>
+          <li>Batch API (10/req)</li>
+          <li>Priority support</li>
+          <li>Higher rate limits</li>
+        </ul>
+        <a href="https://rapidapi.com/vericorptestcollab/api/vericorp" class="price-btn price-btn-secondary">Get Started</a>
+      </div>
+      <div class="price-card popular">
+        <h3>Pro</h3>
+        <div class="price">&euro;14.99 <span>/month</span></div>
+        <div class="reqs">5,000 requests/month</div>
+        <ul>
+          <li>Everything in Starter</li>
+          <li>Webhook notifications</li>
+          <li>Priority enrichment</li>
+          <li>Email support</li>
+        </ul>
+        <a href="https://rapidapi.com/vericorptestcollab/api/vericorp" class="price-btn price-btn-primary">Get Pro</a>
+      </div>
+      <div class="price-card">
+        <h3>Business</h3>
+        <div class="price">&euro;39.99 <span>/month</span></div>
+        <div class="reqs">25,000 requests/month</div>
+        <ul>
+          <li>Everything in Pro</li>
+          <li>Dedicated support</li>
+          <li>Custom rate limits</li>
+          <li>SLA guarantee</li>
+        </ul>
+        <a href="https://rapidapi.com/vericorptestcollab/api/vericorp" class="price-btn price-btn-secondary">Contact Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- USE CASES (dark) -->
 <section class="section section-center">
-  <div class="section-label">Use Cases</div>
-  <h2 class="section-title">Built for your industry</h2>
-  <p class="section-subtitle">From compliance to e-commerce, VeriCorp fits your workflow.</p>
-  <div class="usecases-grid">
-    <div class="usecase">
-      <div class="uc-icon">&#127974;</div>
-      <h3>Fintech &amp; Neobanks</h3>
-      <p>KYB onboarding, beneficiary verification, regulatory compliance checks across EU jurisdictions.</p>
-    </div>
-    <div class="usecase">
-      <div class="uc-icon">&#128722;</div>
-      <h3>E-commerce &amp; SaaS</h3>
-      <p>Validate VAT numbers at checkout for B2B tax exemptions. Automate reverse-charge compliance.</p>
-    </div>
-    <div class="usecase">
-      <div class="uc-icon">&#128188;</div>
-      <h3>B2B Platforms</h3>
-      <p>Verify business partners, enrich CRM data, automate supplier onboarding with real company data.</p>
-    </div>
-    <div class="usecase">
-      <div class="uc-icon">&#128200;</div>
-      <h3>Accounting Software</h3>
-      <p>Auto-fill company details from tax IDs. Validate invoices, detect fraud, ensure compliance.</p>
-    </div>
-  </div>
-</section>
-
-<!-- API DOCS -->
-<section class="section" id="docs">
-  <div class="section-label">API Reference</div>
-  <h2 class="section-title" style="margin-bottom:2rem">Endpoints</h2>
-  <div class="api-endpoints">
-    <div class="endpoint">
-      <span class="method method-get">GET</span>
-      <span class="path">/v1/company/{tax_id}</span>
-      <span class="desc">Full company lookup with enrichment</span>
-    </div>
-    <div class="endpoint">
-      <span class="method method-get">GET</span>
-      <span class="path">/v1/company/gb/{company_number}</span>
-      <span class="desc">UK Companies House lookup</span>
-    </div>
-    <div class="endpoint">
-      <span class="method method-get">GET</span>
-      <span class="path">/v1/validate/{vat_number}</span>
-      <span class="desc">VAT number validation via VIES</span>
-    </div>
-    <div class="endpoint">
-      <span class="method method-post">POST</span>
-      <span class="path">/v1/batch</span>
-      <span class="desc">Batch lookup (up to 10 tax IDs)</span>
-    </div>
-    <div class="endpoint">
-      <span class="method method-get">GET</span>
-      <span class="path">/v1/countries</span>
-      <span class="desc">List supported countries</span>
-    </div>
-    <div class="endpoint">
-      <span class="method method-get">GET</span>
-      <span class="path">/v1/health</span>
-      <span class="desc">API health check</span>
+  <div class="section-inner">
+    <div class="section-label">Use Cases</div>
+    <h2 class="section-title">Built for your industry</h2>
+    <p class="section-subtitle">From compliance to e-commerce, VeriCorp fits your workflow.</p>
+    <div class="usecases-grid">
+      <div class="usecase">
+        <div class="uc-icon">&#127974;</div>
+        <h3>Fintech &amp; Neobanks</h3>
+        <p>KYB onboarding, beneficiary verification, regulatory compliance checks across EU jurisdictions.</p>
+      </div>
+      <div class="usecase">
+        <div class="uc-icon">&#128722;</div>
+        <h3>E-commerce &amp; SaaS</h3>
+        <p>Validate VAT numbers at checkout for B2B tax exemptions. Automate reverse-charge compliance.</p>
+      </div>
+      <div class="usecase">
+        <div class="uc-icon">&#128188;</div>
+        <h3>B2B Platforms</h3>
+        <p>Verify business partners, enrich CRM data, automate supplier onboarding with real company data.</p>
+      </div>
+      <div class="usecase">
+        <div class="uc-icon">&#128200;</div>
+        <h3>Accounting Software</h3>
+        <p>Auto-fill company details from tax IDs. Validate invoices, detect fraud, ensure compliance.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
+<!-- API DOCS (light) -->
+<section class="section section-light" id="docs">
+  <div class="section-inner">
+    <div class="section-label">API Reference</div>
+    <h2 class="section-title" style="margin-bottom:2rem">Endpoints</h2>
+    <div class="api-endpoints">
+      <div class="endpoint">
+        <span class="method method-get">GET</span>
+        <span class="path">/v1/company/{tax_id}</span>
+        <span class="desc">Full company lookup with enrichment</span>
+      </div>
+      <div class="endpoint">
+        <span class="method method-get">GET</span>
+        <span class="path">/v1/company/gb/{company_number}</span>
+        <span class="desc">UK Companies House lookup</span>
+      </div>
+      <div class="endpoint">
+        <span class="method method-get">GET</span>
+        <span class="path">/v1/validate/{vat_number}</span>
+        <span class="desc">VAT number validation via VIES</span>
+      </div>
+      <div class="endpoint">
+        <span class="method method-post">POST</span>
+        <span class="path">/v1/batch</span>
+        <span class="desc">Batch lookup (up to 10 tax IDs)</span>
+      </div>
+      <div class="endpoint">
+        <span class="method method-get">GET</span>
+        <span class="path">/v1/countries</span>
+        <span class="desc">List supported countries</span>
+      </div>
+      <div class="endpoint">
+        <span class="method method-get">GET</span>
+        <span class="path">/v1/health</span>
+        <span class="desc">API health check</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA (dark) -->
 <section class="cta-section">
   <h2>Ready to verify European companies?</h2>
   <p>Start with 200 free requests per month. No credit card required.</p>
@@ -710,7 +739,7 @@ company = client.<span class="fn">lookup</span>(<span class="str">"PT502011378"<
     </div>
     <div class="footer-col">
       <h4>Resources</h4>
-      <a href="https://vericorp-checker-proxy.vericorptest.workers.dev" target="_blank">Free VAT Checker</a>
+      <a href="https://vericorp-checker.pages.dev" target="_blank">Free VAT Checker</a>
       <a href="https://github.com/vericorptest-collab/vericorp-postman" target="_blank">Postman Collection</a>
       <a href="https://github.com/vericorptest-collab/vericorp-templates" target="_blank">Templates</a>
       <a href="https://vericorp-comparisons.pages.dev" target="_blank">Comparisons</a>
@@ -718,7 +747,7 @@ company = client.<span class="fn">lookup</span>(<span class="str">"PT502011378"<
     <div class="footer-col">
       <h4>Integrations</h4>
       <a href="https://rapidapi.com/vericorptestcollab/api/vericorp" target="_blank">RapidAPI</a>
-      <a href="https://vericorp-mcp-server.vericorptest.workers.dev/mcp" target="_blank">MCP Server</a>
+      <a href="https://github.com/vericorptest-collab/vericorp-mcp-server" target="_blank">MCP Server</a>
       <a href="https://github.com/vericorptest-collab" target="_blank">GitHub</a>
     </div>
   </div>
@@ -754,12 +783,14 @@ function runDemo(){
   const output=document.getElementById('demoOutput');
   btn.disabled=true;btn.textContent='Loading...';
   output.innerHTML='<span class="demo-cursor"></span>';
+  output.style.color='#94A3B8';
   const data=DEMO_DATA[input];
   const json=data?JSON.stringify(data,null,2):'{\n  "error": "not_found",\n  "message": "No data found for '+input+'. Try: PT502011378, DK10150817, NO923609016, CZ00075370"\n}';
   let i=0;
   const delay=data?800:300;
   setTimeout(()=>{
     output.innerHTML='';
+    output.style.color=data?'#059669':'#DC2626';
     const interval=setInterval(()=>{
       if(i<json.length){output.textContent+=json[i];i++}
       else{clearInterval(interval);btn.disabled=false;btn.textContent='Look up'}
