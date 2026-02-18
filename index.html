@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VeriCorp API — European Company Verification & VAT Validation</title>
+<meta name="description" content="Verify European companies in real-time. 28 countries, 8 enriched sources, VAT validation, directors, PSC data. SDKs for JavaScript, Python, MCP, and more.">
+<meta property="og:title" content="VeriCorp API — European Company Verification">
+<meta property="og:description" content="Real-time company data from official registries. 28 countries, sub-200ms cached responses, free tier available.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vericorp.pages.dev">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#0C1E3A;--deep:#142D55;--royal:#1E4D8C;
+  --accent:#3B82F6;--electric:#60A5FA;--sky:#93C5FD;
+  --teal:#06B6D4;--verified:#10B981;--gold:#F59E0B;--error:#EF4444;
+  --surface:#F8FAFC;--card:#FFFFFF;--border:#E2E8F0;--muted:#94A3B8;
+  --font:'Plus Jakarta Sans',sans-serif;--mono:'JetBrains Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--navy);color:#E2E8F0;line-height:1.6;overflow-x:hidden}
+a{color:var(--electric);text-decoration:none;transition:color .2s}
+a:hover{color:var(--sky)}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(20px);background:rgba(12,30,58,.85);border-bottom:1px solid rgba(255,255,255,.06)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:.875rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-weight:800;font-size:1.25rem;color:#fff;display:flex;align-items:center;gap:.5rem}
+.nav-logo span{color:var(--verified)}
+.nav-links{display:flex;gap:2rem;align-items:center}
+.nav-links a{color:var(--muted);font-size:.875rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:#fff}
+.nav-cta{background:var(--accent);color:#fff!important;padding:.5rem 1.25rem;border-radius:8px;font-weight:600;font-size:.875rem;transition:all .2s}
+.nav-cta:hover{background:var(--electric);color:#fff!important;transform:translateY(-1px)}
+.nav-mobile{display:none;background:none;border:none;color:#fff;font-size:1.5rem;cursor:pointer}
+
+/* HERO */
+.hero{padding:8rem 1.5rem 4rem;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:800px;height:800px;background:radial-gradient(circle,rgba(59,130,246,.12) 0%,transparent 70%);pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.2);border-radius:100px;padding:.375rem 1rem;font-size:.8rem;color:var(--electric);margin-bottom:1.5rem}
+.hero h1{font-size:clamp(2.25rem,5vw,3.75rem);font-weight:800;line-height:1.1;color:#fff;margin-bottom:1rem;letter-spacing:-.02em}
+.hero h1 .gradient{background:linear-gradient(135deg,var(--accent),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{font-size:1.125rem;color:var(--muted);max-width:640px;margin:0 auto 2rem}
+.hero-buttons{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:2.5rem}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.75rem;border-radius:10px;font-weight:600;font-size:.95rem;transition:all .2s;border:none;cursor:pointer}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:var(--electric);color:#fff;transform:translateY(-1px);box-shadow:0 8px 30px rgba(59,130,246,.3)}
+.btn-secondary{background:rgba(255,255,255,.06);color:#fff;border:1px solid rgba(255,255,255,.1)}
+.btn-secondary:hover{background:rgba(255,255,255,.1);color:#fff;transform:translateY(-1px)}
+.hero-stats{display:flex;gap:3rem;justify-content:center;flex-wrap:wrap}
+.hero-stat{text-align:center}
+.hero-stat .num{font-size:1.75rem;font-weight:800;color:#fff}
+.hero-stat .label{font-size:.8rem;color:var(--muted);margin-top:.125rem}
+
+/* TRUST BAR */
+.trust{border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);padding:1.5rem;background:rgba(255,255,255,.02)}
+.trust-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;align-items:center}
+.trust-item{display:flex;align-items:center;gap:.5rem;color:var(--muted);font-size:.85rem;font-weight:500}
+.trust-item svg{width:18px;height:18px;color:var(--verified)}
+
+/* SECTIONS */
+.section{max-width:1200px;margin:0 auto;padding:5rem 1.5rem}
+.section-label{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--teal);margin-bottom:.75rem}
+.section-title{font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:800;color:#fff;margin-bottom:1rem;letter-spacing:-.01em}
+.section-subtitle{color:var(--muted);font-size:1.05rem;max-width:600px;margin-bottom:3rem}
+.section-center{text-align:center}
+.section-center .section-subtitle{margin-left:auto;margin-right:auto}
+
+/* HOW IT WORKS */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.step{position:relative;padding:2rem;background:var(--deep);border-radius:16px;border:1px solid rgba(255,255,255,.06)}
+.step-num{width:36px;height:36px;border-radius:10px;background:rgba(59,130,246,.15);color:var(--accent);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;margin-bottom:1rem}
+.step h3{color:#fff;font-size:1.1rem;font-weight:700;margin-bottom:.5rem}
+.step p{color:var(--muted);font-size:.9rem}
+.step code{background:rgba(59,130,246,.1);color:var(--electric);padding:.125rem .5rem;border-radius:4px;font-family:var(--mono);font-size:.8rem}
+
+/* FEATURES */
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.feature-card{padding:1.75rem;background:var(--deep);border-radius:16px;border:1px solid rgba(255,255,255,.06);transition:all .25s}
+.feature-card:hover{border-color:rgba(59,130,246,.3);transform:translateY(-2px)}
+.feature-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;font-size:1.25rem}
+.feature-card h3{color:#fff;font-size:1rem;font-weight:700;margin-bottom:.5rem}
+.feature-card p{color:var(--muted);font-size:.875rem;line-height:1.5}
+
+/* ECOSYSTEM */
+.eco-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem}
+.eco-card{padding:1.5rem;background:var(--deep);border-radius:14px;border:1px solid rgba(255,255,255,.06);transition:all .25s;display:flex;flex-direction:column;gap:.75rem}
+.eco-card:hover{border-color:rgba(6,182,212,.3);transform:translateY(-2px);background:rgba(20,45,85,.8)}
+.eco-card .eco-icon{font-size:1.5rem}
+.eco-card h3{color:#fff;font-size:.95rem;font-weight:700}
+.eco-card p{color:var(--muted);font-size:.8rem;line-height:1.5;flex:1}
+.eco-card code{background:rgba(6,182,212,.1);color:var(--teal);padding:.2rem .5rem;border-radius:4px;font-family:var(--mono);font-size:.75rem;display:inline-block}
+.eco-card .eco-link{font-size:.8rem;font-weight:600;color:var(--teal);display:inline-flex;align-items:center;gap:.25rem;margin-top:auto}
+.eco-card .eco-link:hover{color:var(--electric)}
+
+/* CODE EXAMPLES */
+.code-section{background:var(--deep);border-radius:16px;border:1px solid rgba(255,255,255,.06);overflow:hidden}
+.code-tabs{display:flex;border-bottom:1px solid rgba(255,255,255,.06);overflow-x:auto}
+.code-tab{padding:.75rem 1.5rem;font-size:.85rem;font-weight:600;color:var(--muted);cursor:pointer;border:none;background:none;white-space:nowrap;transition:all .2s;border-bottom:2px solid transparent}
+.code-tab:hover{color:#fff}
+.code-tab.active{color:var(--teal);border-bottom-color:var(--teal);background:rgba(6,182,212,.05)}
+.code-block{display:none;padding:1.5rem;overflow-x:auto}
+.code-block.active{display:block}
+.code-block pre{font-family:var(--mono);font-size:.82rem;line-height:1.7;color:#E2E8F0}
+.code-block .cm{color:var(--muted)}
+.code-block .kw{color:#C084FC}
+.code-block .str{color:var(--verified)}
+.code-block .fn{color:var(--electric)}
+.code-block .num{color:var(--gold)}
+
+/* COUNTRIES */
+.countries-grid{display:flex;flex-wrap:wrap;gap:.625rem;justify-content:center}
+.country-pill{display:inline-flex;align-items:center;gap:.375rem;padding:.5rem .875rem;border-radius:8px;font-size:.8rem;font-weight:600;border:1px solid rgba(255,255,255,.08);transition:all .2s}
+.country-pill:hover{transform:translateY(-1px)}
+.country-pill.enriched{background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:var(--verified)}
+.country-pill.vies{background:rgba(59,130,246,.06);border-color:rgba(59,130,246,.15);color:var(--electric)}
+.countries-legend{display:flex;gap:2rem;justify-content:center;margin-bottom:2rem}
+.legend-item{display:flex;align-items:center;gap:.5rem;font-size:.8rem;color:var(--muted)}
+.legend-dot{width:10px;height:10px;border-radius:50%}
+.legend-dot.green{background:var(--verified)}
+.legend-dot.blue{background:var(--accent)}
+
+/* DEMO */
+.demo-box{background:var(--deep);border-radius:16px;border:1px solid rgba(255,255,255,.06);overflow:hidden;max-width:800px;margin:0 auto}
+.demo-header{padding:1.25rem 1.5rem;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.demo-input{flex:1;min-width:200px;padding:.625rem 1rem;border-radius:8px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);color:#fff;font-family:var(--mono);font-size:.9rem;outline:none;transition:border-color .2s}
+.demo-input:focus{border-color:var(--accent)}
+.demo-btn{padding:.625rem 1.25rem;background:var(--accent);color:#fff;border:none;border-radius:8px;font-weight:600;font-size:.85rem;cursor:pointer;transition:all .2s;font-family:var(--font)}
+.demo-btn:hover{background:var(--electric)}
+.demo-btn:disabled{opacity:.5;cursor:not-allowed}
+.demo-samples{padding:.75rem 1.5rem;border-bottom:1px solid rgba(255,255,255,.06);display:flex;gap:.5rem;flex-wrap:wrap}
+.demo-sample{padding:.25rem .625rem;border-radius:6px;font-size:.75rem;font-family:var(--mono);background:rgba(255,255,255,.05);color:var(--muted);cursor:pointer;border:1px solid transparent;transition:all .2s}
+.demo-sample:hover{border-color:rgba(255,255,255,.15);color:#fff}
+.demo-output{padding:1.5rem;min-height:200px;font-family:var(--mono);font-size:.8rem;line-height:1.7;color:var(--verified);white-space:pre-wrap;word-break:break-word}
+.demo-output .demo-cursor{display:inline-block;width:8px;height:14px;background:var(--accent);animation:blink 1s infinite}
+@keyframes blink{0%,50%{opacity:1}51%,100%{opacity:0}}
+
+/* PRICING */
+.pricing-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem}
+.price-card{padding:2rem;background:var(--deep);border-radius:16px;border:1px solid rgba(255,255,255,.06);display:flex;flex-direction:column;transition:all .25s}
+.price-card:hover{transform:translateY(-2px)}
+.price-card.popular{border-color:var(--accent);position:relative}
+.price-card.popular::before{content:'Most Popular';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;font-size:.7rem;font-weight:700;padding:.25rem .875rem;border-radius:100px;white-space:nowrap}
+.price-card h3{color:#fff;font-size:1.1rem;font-weight:700;margin-bottom:.5rem}
+.price-card .price{font-size:2rem;font-weight:800;color:#fff;margin-bottom:.25rem}
+.price-card .price span{font-size:.9rem;font-weight:500;color:var(--muted)}
+.price-card .reqs{color:var(--muted);font-size:.85rem;margin-bottom:1.5rem}
+.price-card ul{list-style:none;flex:1;margin-bottom:1.5rem}
+.price-card li{padding:.375rem 0;font-size:.85rem;color:#E2E8F0;display:flex;align-items:start;gap:.5rem}
+.price-card li::before{content:'✓';color:var(--verified);font-weight:700;flex-shrink:0}
+.price-card .price-btn{display:block;text-align:center;padding:.75rem;border-radius:10px;font-weight:600;font-size:.9rem;transition:all .2s}
+.price-btn-primary{background:var(--accent);color:#fff}
+.price-btn-primary:hover{background:var(--electric);color:#fff}
+.price-btn-secondary{background:rgba(255,255,255,.06);color:#fff;border:1px solid rgba(255,255,255,.1)}
+.price-btn-secondary:hover{background:rgba(255,255,255,.1);color:#fff}
+
+/* USE CASES */
+.usecases-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem}
+.usecase{padding:1.75rem;background:var(--deep);border-radius:16px;border:1px solid rgba(255,255,255,.06)}
+.usecase .uc-icon{font-size:1.5rem;margin-bottom:1rem}
+.usecase h3{color:#fff;font-size:1rem;font-weight:700;margin-bottom:.5rem}
+.usecase p{color:var(--muted);font-size:.85rem;line-height:1.5}
+
+/* API DOCS */
+.api-endpoints{display:flex;flex-direction:column;gap:.75rem}
+.endpoint{display:flex;align-items:center;gap:1rem;padding:1rem 1.25rem;background:var(--deep);border-radius:10px;border:1px solid rgba(255,255,255,.06)}
+.method{padding:.25rem .625rem;border-radius:6px;font-family:var(--mono);font-size:.75rem;font-weight:700;min-width:52px;text-align:center}
+.method-get{background:rgba(16,185,129,.15);color:var(--verified)}
+.method-post{background:rgba(59,130,246,.15);color:var(--accent)}
+.endpoint .path{font-family:var(--mono);font-size:.875rem;color:#fff}
+.endpoint .desc{margin-left:auto;color:var(--muted);font-size:.8rem}
+
+/* CTA */
+.cta-section{text-align:center;padding:5rem 1.5rem;background:linear-gradient(180deg,transparent 0%,rgba(59,130,246,.05) 100%)}
+.cta-section h2{font-size:clamp(1.75rem,3vw,2.25rem);font-weight:800;color:#fff;margin-bottom:.75rem}
+.cta-section p{color:var(--muted);margin-bottom:2rem;font-size:1.05rem}
+
+/* FOOTER */
+.footer{border-top:1px solid rgba(255,255,255,.06);padding:3.5rem 1.5rem 2rem}
+.footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr repeat(4,1fr);gap:2.5rem}
+.footer-brand p{color:var(--muted);font-size:.85rem;margin-top:.75rem;line-height:1.6}
+.footer-col h4{color:#fff;font-size:.85rem;font-weight:700;margin-bottom:1rem;text-transform:uppercase;letter-spacing:.05em}
+.footer-col a{display:block;color:var(--muted);font-size:.85rem;padding:.25rem 0;transition:color .2s}
+.footer-col a:hover{color:#fff}
+.footer-bottom{max-width:1200px;margin:2rem auto 0;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.06);display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:.8rem;flex-wrap:wrap;gap:1rem}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .features-grid,.pricing-grid,.usecases-grid{grid-template-columns:repeat(2,1fr)}
+  .eco-grid{grid-template-columns:repeat(2,1fr)}
+  .steps{grid-template-columns:1fr}
+  .footer-inner{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .nav-mobile{display:block}
+  .nav-links.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--navy);padding:1rem 1.5rem;border-bottom:1px solid rgba(255,255,255,.06);gap:1rem}
+  .hero{padding:6rem 1.5rem 3rem}
+  .hero-stats{gap:1.5rem}
+  .features-grid,.pricing-grid,.usecases-grid{grid-template-columns:1fr}
+  .eco-grid{grid-template-columns:1fr}
+  .endpoint .desc{display:none}
+  .footer-inner{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="10" stroke="#3B82F6" stroke-width="2"/></svg>
+      Veri<span>Corp</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#features">Features</a>
+      <a href="#ecosystem">Ecosystem</a>
+      <a href="#demo">Demo</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#docs">Docs</a>
+      <a href="https://rapidapi.com/vericorptestcollab/api/vericorp" class="nav-cta">Get API Key</a>
+    </div>
+    <button class="nav-mobile" onclick="document.getElementById('navLinks').classList.toggle('open')">&#9776;</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" fill="#F59E0B"/></svg>
+    Now with SDKs, MCP, GitHub Action &amp; more
+  </div>
+  <h1>Verify. <span class="gradient">Enrich.</span> Trust.</h1>
+  <p>Real-time European company data from official registries. 28 countries, 8 enriched sources, sub-200ms cached responses. One API call.</p>
+  <div class="hero-buttons">
+    <a href="https://rapidapi.com/vericorptestcollab/api/vericorp" class="btn btn-primary">Get Free API Key &rarr;</a>
+    <a href="#demo" class="btn btn-secondary">Try Live Demo</a>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="num">28</div><div class="label">Countries</div></div>
+    <div class="hero-stat"><div class="num">8</div><div class="label">Enriched Sources</div></div>
+    <div class="hero-stat"><div class="num">&lt;200ms</div><div class="label">Cached Response</div></div>
+    <div class="hero-stat"><div class="num">99.9%</div><div class="label">Uptime (Edge)</div></div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust">
+  <div class="trust-inner">
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      VIES Validated
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+      GDPR Compliant
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      Cloudflare Edge
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+      OpenAPI 3.0
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="section section-center">
+  <div class="section-label">How It Works</div>
+  <h2 class="section-title">Three steps to verified data</h2>
+  <p class="section-subtitle">No scraping, no stale databases. VeriCorp queries official registries in real-time and caches results for 30 days.</p>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h3>Send a tax ID</h3>
+      <p><code>GET /v1/company/PT502011378</code></p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h3>We query official sources</h3>
+      <p>VIES, Companies House, national registries &mdash; all in parallel at the edge.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h3>Get enriched data</h3>
+      <p>Company name, address, legal form, directors, VAT status, activity codes &mdash; in one JSON response.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="section section-center" id="features">
+  <div class="section-label">Features</div>
+  <h2 class="section-title">Everything you need for KYB</h2>
+  <p class="section-subtitle">From VAT validation to full company enrichment, built for compliance teams and developers.</p>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon" style="background:rgba(16,185,129,.1);color:var(--verified)">&#10003;</div>
+      <h3>VAT Validation</h3>
+      <p>Real-time VIES validation for all EU member states. Confirm VAT numbers are active and registered.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="background:rgba(59,130,246,.1);color:var(--accent)">&#9733;</div>
+      <h3>Rich Enrichment</h3>
+      <p>Company name, address, legal form, status, directors, PSC, activity codes from 8 national registries.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="background:rgba(6,182,212,.1);color:var(--teal)">&#9672;</div>
+      <h3>28 Countries</h3>
+      <p>Full EU coverage plus UK, Norway, Switzerland. 8 countries with deep enrichment, 20 with VAT validation.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="background:rgba(245,158,11,.1);color:var(--gold)">&#9889;</div>
+      <h3>Edge Performance</h3>
+      <p>Deployed on Cloudflare Workers across 300+ locations. Sub-200ms cached responses worldwide.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="background:rgba(139,92,246,.1);color:#A78BFA">&#8644;</div>
+      <h3>Batch API</h3>
+      <p>Look up to 10 companies in a single request. Parallel processing, one response with all results.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="background:rgba(236,72,153,.1);color:#F472B6">&#8635;</div>
+      <h3>Graceful Degradation</h3>
+      <p>If a source is down, VeriCorp returns partial data from other sources. You always get a response.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ECOSYSTEM -->
+<section class="section section-center" id="ecosystem">
+  <div class="section-label">Ecosystem</div>
+  <h2 class="section-title">Use VeriCorp your way</h2>
+  <p class="section-subtitle">SDKs, tools and integrations for every workflow. All open-source.</p>
+  <div class="eco-grid">
+
+    <a class="eco-card" href="https://www.npmjs.com/package/vericorp" target="_blank" rel="noopener">
+      <div class="eco-icon">&#128230;</div>
+      <h3>JavaScript SDK</h3>
+      <p>TypeScript-first, zero dependencies, retry with backoff, ESM + CJS.</p>
+      <code>npm install vericorp</code>
+      <span class="eco-link">View on npm &rarr;</span>
+    </a>
+
+    <a class="eco-card" href="https://pypi.org/project/vericorp/" target="_blank" rel="noopener">
+      <div class="eco-icon">&#128013;</div>
+      <h3>Python SDK</h3>
+      <p>Sync + async clients, Pydantic v2 models, httpx, full type hints.</p>
+      <code>pip install vericorp</code>
+      <span class="eco-link">View on PyPI &rarr;</span>
+    </a>
+
+    <a class="eco-card" href="https://vericorp-mcp-server.vericorptest.workers.dev/mcp" target="_blank" rel="noopener">
+      <div class="eco-icon">&#129302;</div>
+      <h3>MCP Server</h3>
+      <p>Use VeriCorp in Claude Desktop, Cursor, or any MCP client. 3 tools, free, no API key needed.</p>
+      <code>Add to claude_desktop_config.json</code>
+      <span class="eco-link">Setup guide &rarr;</span>
+    </a>
+
+    <a class="eco-card" href="https://github.com/vericorptest-collab/validate-vat" target="_blank" rel="noopener">
+      <div class="eco-icon">&#9881;</div>
+      <h3>GitHub Action</h3>
+      <p>Validate VAT numbers in CI/CD pipelines. Fail builds on invalid VATs, markdown summary.</p>
+      <code>uses: vericorptest-collab/validate-vat@v1</code>
+      <span class="eco-link">View on GitHub &rarr;</span>
+    </a>
+
+    <a class="eco-card" href="https://vericorp-checker-proxy.vericorptest.workers.dev" target="_blank" rel="noopener">
+      <div class="eco-icon">&#128269;</div>
+      <h3>Free VAT Checker</h3>
+      <p>Instant company lookup online. No login, no API key. Paste a VAT number and get results.</p>
+      <code>check.vericorp.dev</code>
+      <span class="eco-link">Open tool &rarr;</span>
+    </a>
+
+    <a class="eco-card" href="https://github.com/vericorptest-collab/vericorp-postman" target="_blank" rel="noopener">
+      <div class="eco-icon">&#128232;</div>
+      <h3>Postman Collection</h3>
+      <p>14 pre-built requests, test scripts, environment variables. Import and start testing.</p>
+      <code>Import collection JSON</code>
+      <span class="eco-link">Download &rarr;</span>
+    </a>
+
+    <a class="eco-card" href="https://www.npmjs.com/package/eu-tax-id-validator" target="_blank" rel="noopener">
+      <div class="eco-icon">&#9989;</div>
+      <h3>Tax ID Validator</h3>
+      <p>Offline validation for 30 countries. Checksums, format checks, zero deps, &lt;5KB.</p>
+      <code>npm install eu-tax-id-validator</code>
+      <span class="eco-link">View on npm &rarr;</span>
+    </a>
+
+    <a class="eco-card" href="https://github.com/vericorptest-collab/vericorp-templates" target="_blank" rel="noopener">
+      <div class="eco-icon">&#128196;</div>
+      <h3>Starter Templates</h3>
+      <p>Next.js, Express, and Stripe integration examples. Copy, configure, and ship.</p>
+      <code>3 ready-to-use projects</code>
+      <span class="eco-link">Browse templates &rarr;</span>
+    </a>
+
+  </div>
+</section>
+
+<!-- CODE EXAMPLES -->
+<section class="section">
+  <div class="section-label">Code Examples</div>
+  <h2 class="section-title" style="margin-bottom:2rem">Start in under a minute</h2>
+  <div class="code-section">
+    <div class="code-tabs">
+      <button class="code-tab active" onclick="showTab('curl')">cURL</button>
+      <button class="code-tab" onclick="showTab('js')">JavaScript</button>
+      <button class="code-tab" onclick="showTab('python')">Python</button>
+      <button class="code-tab" onclick="showTab('action')">GitHub Action</button>
+      <button class="code-tab" onclick="showTab('mcp')">MCP Config</button>
+    </div>
+    <div class="code-block active" id="tab-curl">
+<pre><span class="kw">curl</span> <span class="str">"https://vericorp.p.rapidapi.com/v1/company/PT502011378"</span> \
+  -H <span class="str">"X-RapidAPI-Key: YOUR_API_KEY"</span> \
+  -H <span class="str">"X-RapidAPI-Host: vericorp.p.rapidapi.com"</span></pre>
+    </div>
+    <div class="code-block" id="tab-js">
+<pre><span class="kw">import</span> { VeriCorp } <span class="kw">from</span> <span class="str">'vericorp'</span>;
+
+<span class="kw">const</span> client = <span class="kw">new</span> <span class="fn">VeriCorp</span>(<span class="str">'YOUR_API_KEY'</span>);
+
+<span class="kw">const</span> company = <span class="kw">await</span> client.<span class="fn">lookup</span>(<span class="str">'PT502011378'</span>);
+console.<span class="fn">log</span>(company.name);    <span class="cm">// "Nexperience Lda"</span>
+console.<span class="fn">log</span>(company.status);  <span class="cm">// "active"</span>
+
+<span class="cm">// VAT validation</span>
+<span class="kw">const</span> result = <span class="kw">await</span> client.<span class="fn">validate</span>(<span class="str">'DK10150817'</span>);
+console.<span class="fn">log</span>(result.valid);    <span class="cm">// true</span></pre>
+    </div>
+    <div class="code-block" id="tab-python">
+<pre><span class="kw">from</span> vericorp <span class="kw">import</span> VeriCorp
+
+client = <span class="fn">VeriCorp</span>(<span class="str">"YOUR_API_KEY"</span>)
+
+company = client.<span class="fn">lookup</span>(<span class="str">"PT502011378"</span>)
+<span class="fn">print</span>(company.name)      <span class="cm"># "Nexperience Lda"</span>
+<span class="fn">print</span>(company.status)    <span class="cm"># "active"</span>
+
+<span class="cm"># Async version</span>
+<span class="kw">from</span> vericorp <span class="kw">import</span> AsyncVeriCorp
+
+<span class="kw">async</span> <span class="kw">with</span> <span class="fn">AsyncVeriCorp</span>(<span class="str">"YOUR_API_KEY"</span>) <span class="kw">as</span> client:
+    company = <span class="kw">await</span> client.<span class="fn">lookup</span>(<span class="str">"PT502011378"</span>)</pre>
+    </div>
+    <div class="code-block" id="tab-action">
+<pre><span class="cm"># .github/workflows/validate.yml</span>
+<span class="kw">name</span>: Validate VAT Numbers
+<span class="kw">on</span>: [push]
+
+<span class="kw">jobs</span>:
+  <span class="kw">validate</span>:
+    runs-on: ubuntu-latest
+    steps:
+      - <span class="kw">uses</span>: <span class="str">vericorptest-collab/validate-vat@v1</span>
+        <span class="kw">with</span>:
+          <span class="kw">vat-numbers</span>: |
+            PT502011378
+            DK10150817
+            GB12345678
+          <span class="kw">api-key</span>: <span class="str">${{ secrets.VERICORP_API_KEY }}</span>
+          <span class="kw">fail-on-invalid</span>: <span class="str">'true'</span></pre>
+    </div>
+    <div class="code-block" id="tab-mcp">
+<pre><span class="cm">// Claude Desktop: ~/.claude/claude_desktop_config.json</span>
+{
+  <span class="str">"mcpServers"</span>: {
+    <span class="str">"vericorp"</span>: {
+      <span class="str">"url"</span>: <span class="str">"https://vericorp-mcp-server.vericorptest.workers.dev/mcp"</span>
+    }
+  }
+}
+
+<span class="cm">// Then ask Claude:</span>
+<span class="cm">// "Look up the company with VAT PT502011378"</span>
+<span class="cm">// "Is DK10150817 a valid VAT number?"</span>
+<span class="cm">// "What countries does VeriCorp support?"</span></pre>
+    </div>
+  </div>
+</section>
+
+<!-- COUNTRIES -->
+<section class="section section-center" id="countries">
+  <div class="section-label">Coverage</div>
+  <h2 class="section-title">28 European countries</h2>
+  <p class="section-subtitle">8 countries with deep enrichment from national registries. 20 countries with real-time VIES VAT validation.</p>
+  <div class="countries-legend">
+    <div class="legend-item"><div class="legend-dot green"></div> Enriched (registry data)</div>
+    <div class="legend-item"><div class="legend-dot blue"></div> VIES validation</div>
+  </div>
+  <div class="countries-grid">
+    <div class="country-pill enriched">&#127477;&#127481; Portugal</div>
+    <div class="country-pill enriched">&#127468;&#127463; United Kingdom</div>
+    <div class="country-pill enriched">&#127465;&#127472; Denmark</div>
+    <div class="country-pill enriched">&#127475;&#127476; Norway</div>
+    <div class="country-pill enriched">&#127467;&#127470; Finland</div>
+    <div class="country-pill enriched">&#127466;&#127466; Estonia</div>
+    <div class="country-pill enriched">&#127477;&#127473; Poland</div>
+    <div class="country-pill enriched">&#127464;&#127487; Czech Republic</div>
+    <div class="country-pill vies">&#127465;&#127466; Germany</div>
+    <div class="country-pill vies">&#127467;&#127479; France</div>
+    <div class="country-pill vies">&#127470;&#127481; Italy</div>
+    <div class="country-pill vies">&#127466;&#127480; Spain</div>
+    <div class="country-pill vies">&#127475;&#127473; Netherlands</div>
+    <div class="country-pill vies">&#127463;&#127466; Belgium</div>
+    <div class="country-pill vies">&#127462;&#127481; Austria</div>
+    <div class="country-pill vies">&#127470;&#127466; Ireland</div>
+    <div class="country-pill vies">&#127480;&#127466; Sweden</div>
+    <div class="country-pill vies">&#127479;&#127476; Romania</div>
+    <div class="country-pill vies">&#127469;&#127482; Hungary</div>
+    <div class="country-pill vies">&#127468;&#127479; Greece</div>
+    <div class="country-pill vies">&#127463;&#127468; Bulgaria</div>
+    <div class="country-pill vies">&#127469;&#127479; Croatia</div>
+    <div class="country-pill vies">&#127480;&#127472; Slovakia</div>
+    <div class="country-pill vies">&#127473;&#127481; Lithuania</div>
+    <div class="country-pill vies">&#127473;&#127483; Latvia</div>
+    <div class="country-pill vies">&#127480;&#127470; Slovenia</div>
+    <div class="country-pill vies">&#127473;&#127482; Luxembourg</div>
+    <div class="country-pill vies">&#127464;&#127486; Cyprus</div>
+  </div>
+</section>
+
+<!-- LIVE DEMO -->
+<section class="section section-center" id="demo">
+  <div class="section-label">Live Demo</div>
+  <h2 class="section-title">Try it now</h2>
+  <p class="section-subtitle">Enter a European tax ID and see real API response data. No signup required.</p>
+  <div class="demo-box">
+    <div class="demo-header">
+      <input type="text" class="demo-input" id="demoInput" placeholder="Enter tax ID (e.g. PT502011378)" onkeydown="if(event.key==='Enter')runDemo()">
+      <button class="demo-btn" id="demoBtn" onclick="runDemo()">Look up</button>
+    </div>
+    <div class="demo-samples">
+      <span class="demo-sample" onclick="setDemo('PT502011378')">PT502011378</span>
+      <span class="demo-sample" onclick="setDemo('DK10150817')">DK10150817</span>
+      <span class="demo-sample" onclick="setDemo('NO923609016')">NO923609016</span>
+      <span class="demo-sample" onclick="setDemo('CZ00075370')">CZ00075370</span>
+    </div>
+    <div class="demo-output" id="demoOutput"><span style="color:var(--muted)">// Response will appear here...</span></div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section section-center" id="pricing">
+  <div class="section-label">Pricing</div>
+  <h2 class="section-title">Simple, transparent pricing</h2>
+  <p class="section-subtitle">Start free. Scale as you grow. All plans include every feature.</p>
+  <div class="pricing-grid">
+    <div class="price-card">
+      <h3>Free</h3>
+      <div class="price">&euro;0 <span>/month</span></div>
+      <div class="reqs">200 requests/month</div>
+      <ul>
+        <li>All 28 countries</li>
+        <li>Full enrichment</li>
+        <li>VAT validation</li>
+        <li>Community support</li>
+      </ul>
+      <a href="https://rapidapi.com/vericorptestcollab/api/vericorp" class="price-btn price-btn-secondary">Start Free</a>
+    </div>
+    <div class="price-card">
+      <h3>Starter</h3>
+      <div class="price">&euro;4.99 <span>/month</span></div>
+      <div class="reqs">1,000 requests/month</div>
+      <ul>
+        <li>Everything in Free</li>
+        <li>Batch API (10/req)</li>
+        <li>Priority support</li>
+        <li>Higher rate limits</li>
+      </ul>
+      <a href="https://rapidapi.com/vericorptestcollab/api/vericorp" class="price-btn price-btn-secondary">Get Started</a>
+    </div>
+    <div class="price-card popular">
+      <h3>Pro</h3>
+      <div class="price">&euro;14.99 <span>/month</span></div>
+      <div class="reqs">5,000 requests/month</div>
+      <ul>
+        <li>Everything in Starter</li>
+        <li>Webhook notifications</li>
+        <li>Priority enrichment</li>
+        <li>Email support</li>
+      </ul>
+      <a href="https://rapidapi.com/vericorptestcollab/api/vericorp" class="price-btn price-btn-primary">Get Pro</a>
+    </div>
+    <div class="price-card">
+      <h3>Business</h3>
+      <div class="price">&euro;39.99 <span>/month</span></div>
+      <div class="reqs">25,000 requests/month</div>
+      <ul>
+        <li>Everything in Pro</li>
+        <li>Dedicated support</li>
+        <li>Custom rate limits</li>
+        <li>SLA guarantee</li>
+      </ul>
+      <a href="https://rapidapi.com/vericorptestcollab/api/vericorp" class="price-btn price-btn-secondary">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- USE CASES -->
+<section class="section section-center">
+  <div class="section-label">Use Cases</div>
+  <h2 class="section-title">Built for your industry</h2>
+  <p class="section-subtitle">From compliance to e-commerce, VeriCorp fits your workflow.</p>
+  <div class="usecases-grid">
+    <div class="usecase">
+      <div class="uc-icon">&#127974;</div>
+      <h3>Fintech &amp; Neobanks</h3>
+      <p>KYB onboarding, beneficiary verification, regulatory compliance checks across EU jurisdictions.</p>
+    </div>
+    <div class="usecase">
+      <div class="uc-icon">&#128722;</div>
+      <h3>E-commerce &amp; SaaS</h3>
+      <p>Validate VAT numbers at checkout for B2B tax exemptions. Automate reverse-charge compliance.</p>
+    </div>
+    <div class="usecase">
+      <div class="uc-icon">&#128188;</div>
+      <h3>B2B Platforms</h3>
+      <p>Verify business partners, enrich CRM data, automate supplier onboarding with real company data.</p>
+    </div>
+    <div class="usecase">
+      <div class="uc-icon">&#128200;</div>
+      <h3>Accounting Software</h3>
+      <p>Auto-fill company details from tax IDs. Validate invoices, detect fraud, ensure compliance.</p>
+    </div>
+  </div>
+</section>
+
+<!-- API DOCS -->
+<section class="section" id="docs">
+  <div class="section-label">API Reference</div>
+  <h2 class="section-title" style="margin-bottom:2rem">Endpoints</h2>
+  <div class="api-endpoints">
+    <div class="endpoint">
+      <span class="method method-get">GET</span>
+      <span class="path">/v1/company/{tax_id}</span>
+      <span class="desc">Full company lookup with enrichment</span>
+    </div>
+    <div class="endpoint">
+      <span class="method method-get">GET</span>
+      <span class="path">/v1/company/gb/{company_number}</span>
+      <span class="desc">UK Companies House lookup</span>
+    </div>
+    <div class="endpoint">
+      <span class="method method-get">GET</span>
+      <span class="path">/v1/validate/{vat_number}</span>
+      <span class="desc">VAT number validation via VIES</span>
+    </div>
+    <div class="endpoint">
+      <span class="method method-post">POST</span>
+      <span class="path">/v1/batch</span>
+      <span class="desc">Batch lookup (up to 10 tax IDs)</span>
+    </div>
+    <div class="endpoint">
+      <span class="method method-get">GET</span>
+      <span class="path">/v1/countries</span>
+      <span class="desc">List supported countries</span>
+    </div>
+    <div class="endpoint">
+      <span class="method method-get">GET</span>
+      <span class="path">/v1/health</span>
+      <span class="desc">API health check</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Ready to verify European companies?</h2>
+  <p>Start with 200 free requests per month. No credit card required.</p>
+  <div class="hero-buttons">
+    <a href="https://rapidapi.com/vericorptestcollab/api/vericorp" class="btn btn-primary">Get Free API Key &rarr;</a>
+    <a href="https://github.com/vericorptest-collab/vericorp-postman" class="btn btn-secondary">Import Postman Collection</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="nav-logo" style="margin-bottom:.25rem">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="10" stroke="#3B82F6" stroke-width="2"/></svg>
+        Veri<span>Corp</span>
+      </div>
+      <p>Real-time European company verification API. Built on Cloudflare Workers for speed, reliability, and global reach.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Product</h4>
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#countries">Countries</a>
+      <a href="#docs">API Reference</a>
+    </div>
+    <div class="footer-col">
+      <h4>SDKs &amp; Tools</h4>
+      <a href="https://www.npmjs.com/package/vericorp" target="_blank">JavaScript SDK</a>
+      <a href="https://pypi.org/project/vericorp/" target="_blank">Python SDK</a>
+      <a href="https://www.npmjs.com/package/eu-tax-id-validator" target="_blank">Tax ID Validator</a>
+      <a href="https://github.com/vericorptest-collab/validate-vat" target="_blank">GitHub Action</a>
+    </div>
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <a href="https://vericorp-checker-proxy.vericorptest.workers.dev" target="_blank">Free VAT Checker</a>
+      <a href="https://github.com/vericorptest-collab/vericorp-postman" target="_blank">Postman Collection</a>
+      <a href="https://github.com/vericorptest-collab/vericorp-templates" target="_blank">Templates</a>
+      <a href="https://vericorp-comparisons.pages.dev" target="_blank">Comparisons</a>
+    </div>
+    <div class="footer-col">
+      <h4>Integrations</h4>
+      <a href="https://rapidapi.com/vericorptestcollab/api/vericorp" target="_blank">RapidAPI</a>
+      <a href="https://vericorp-mcp-server.vericorptest.workers.dev/mcp" target="_blank">MCP Server</a>
+      <a href="https://github.com/vericorptest-collab" target="_blank">GitHub</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2025 VeriCorp. All rights reserved.</span>
+    <span>Data sourced from VIES, Companies House, and national registries.</span>
+  </div>
+</footer>
+
+<script>
+/* Code tabs */
+function showTab(id){
+  document.querySelectorAll('.code-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.code-block').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  document.querySelector('[onclick="showTab(\''+id+'\')"]').classList.add('active');
+}
+
+/* Demo */
+const DEMO_DATA={
+  'PT502011378':{"tax_id":"PT502011378","country":"PT","name":"Nexperience Lda","status":"active","address":{"street":"Rua de Santo Andre 62","city":"Viseu","postal_code":"3500-073","country":"PT"},"legal_form":"Lda","activity":"Computer programming, consultancy and related activities","vat_valid":true,"source":"Portal das Financas","cached":true},
+  'DK10150817':{"tax_id":"DK10150817","country":"DK","name":"NOVO NORDISK A/S","status":"NORMAL","address":{"street":"Novo Alle","city":"Bagsvaerd","postal_code":"2880","country":"DK"},"legal_form":"A/S","activity":"Manufacture of pharmaceutical preparations","vat_valid":true,"source":"CVR","cached":true},
+  'NO923609016':{"tax_id":"NO923609016","country":"NO","name":"EQUINOR ASA","status":"Active","address":{"street":"Forusbeen 50","city":"Stavanger","postal_code":"4035","country":"NO"},"legal_form":"ASA","activity":"Extraction of crude petroleum","vat_valid":true,"source":"Bronnoysund","cached":true},
+  'CZ00075370':{"tax_id":"CZ00075370","country":"CZ","name":"Skoda Auto a.s.","status":"Active","address":{"street":"Tr. Vaclava Klementa 869","city":"Mlada Boleslav","postal_code":"293 01","country":"CZ"},"legal_form":"a.s.","activity":"Manufacture of motor vehicles","vat_valid":true,"source":"ARES","cached":true}
+};
+
+function setDemo(id){document.getElementById('demoInput').value=id;runDemo()}
+
+function runDemo(){
+  const input=document.getElementById('demoInput').value.trim().toUpperCase().replace(/[\s.\-]/g,'');
+  if(!input)return;
+  const btn=document.getElementById('demoBtn');
+  const output=document.getElementById('demoOutput');
+  btn.disabled=true;btn.textContent='Loading...';
+  output.innerHTML='<span class="demo-cursor"></span>';
+  const data=DEMO_DATA[input];
+  const json=data?JSON.stringify(data,null,2):'{\n  "error": "not_found",\n  "message": "No data found for '+input+'. Try: PT502011378, DK10150817, NO923609016, CZ00075370"\n}';
+  let i=0;
+  const delay=data?800:300;
+  setTimeout(()=>{
+    output.innerHTML='';
+    const interval=setInterval(()=>{
+      if(i<json.length){output.textContent+=json[i];i++}
+      else{clearInterval(interval);btn.disabled=false;btn.textContent='Look up'}
+    },8);
+  },delay);
+}
+</script>
+</body>
+</html>
