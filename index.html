@@ -72,7 +72,9 @@ a:hover{color:var(--sky)}
 .section-center .section-subtitle{margin-left:auto;margin-right:auto}
 
 /* LIGHT SECTIONS */
-.section-light{background:var(--surface)}
+.section-light{background:var(--surface);position:relative}
+.section-light::before{content:'';position:absolute;top:0;left:0;right:0;height:80px;background:linear-gradient(180deg,var(--navy),var(--surface));pointer-events:none}
+.section-light::after{content:'';position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(180deg,var(--surface),var(--navy));pointer-events:none}
 .section-light .section-title{color:var(--navy)}
 .section-light .section-subtitle{color:#64748B}
 .section-light .section-label{color:var(--accent)}
