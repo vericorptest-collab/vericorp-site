@@ -12,34 +12,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/VeriCorp_Logo_128x128.png" type="image/png">
 <link rel="stylesheet" href="/assets/css/main.css">
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="nav">
-  <div class="nav-inner">
-    <a href="/" class="nav-logo">
-      <img src="/VeriCorp_Logo_128x128.png" width="24" height="24" alt="VeriCorp" style="border-radius:4px">
-      Veri<span>Corp</span>
-    </a>
-    <div class="nav-links" id="navLinks">
-      <div class="nav-dropdown">
-        <a class="nav-dropdown-trigger" style="color:var(--muted);font-size:.875rem;font-weight:500">Products</a>
-        <div class="nav-dropdown-menu">
-          <a href="/products/company-verify">Company Verify<small>VAT validation + enrichment for 28 EU countries</small></a>
-          <a href="/products/invoice-extract">Invoice Extract<small>OCR + AI extraction + NIF/IBAN validation</small></a>
-          <a href="/products/doc-validate" class="active coming-soon">Doc Validate<small>IBAN, BIC, SEPA, NIF document validation</small></a>
-        </div>
-      </div>
-      <a href="/pricing">Pricing</a>
-      <a href="/playground">Playground</a>
-      <a href="https://rapidapi.com/vericorptestcollab/api/vericorp" class="nav-cta">Get API Key</a>
-    </div>
-    <button class="nav-mobile" aria-label="Menu">&#9776;</button>
-  </div>
-</nav>
+<div id="nav-root"></div>
+<script src="/assets/js/nav.js"></script>
 
 <!-- HERO -->
 <section class="hero" style="padding-bottom:3rem">
@@ -146,6 +125,5 @@
   </div>
 </footer>
 
-<script src="/assets/js/nav.js"></script>
 </body>
 </html>

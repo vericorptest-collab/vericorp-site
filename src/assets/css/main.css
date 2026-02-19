@@ -202,7 +202,7 @@ a:hover{color:var(--sky)}
 .playground-sample:hover{border-color:rgba(255,255,255,.15);color:#fff}
 .playground-sample.active{background:rgba(59,130,246,.15);border-color:rgba(59,130,246,.3);color:var(--electric)}
 .playground-output{display:grid;grid-template-columns:1fr;min-height:300px}
-.playground-json{padding:1.5rem;font-family:var(--mono);font-size:.78rem;line-height:1.7;white-space:pre;overflow-x:auto;background:rgba(0,0,0,.15);color:#E2E8F0;max-height:600px;overflow-y:auto}
+.playground-json{padding:1.5rem;font-family:var(--mono);font-size:.78rem;line-height:1.7;white-space:pre;overflow-x:auto;background:rgba(0,0,0,.15);color:#E2E8F0;max-height:600px;overflow-y:auto;text-align:left}
 .playground-json .json-key{color:var(--electric)}
 .playground-json .json-str{color:var(--verified)}
 .playground-json .json-num{color:var(--gold)}
@@ -219,6 +219,13 @@ a:hover{color:var(--sky)}
 .confidence-high{background:var(--verified)}
 .confidence-medium{background:var(--gold)}
 .confidence-low{background:var(--error)}
+.playground-loader{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:4rem 2rem;gap:1.25rem}
+.playground-spinner{width:40px;height:40px;border:3px solid rgba(255,255,255,.1);border-top-color:var(--accent);border-radius:50%;animation:pg-spin .8s linear infinite}
+@keyframes pg-spin{to{transform:rotate(360deg)}}
+.playground-loader-text{color:var(--muted);font-size:.9rem;animation:pg-pulse 2s ease-in-out infinite}
+.playground-loader-sub{font-size:.75rem;color:rgba(255,255,255,.3)}
+@keyframes pg-pulse{0%,100%{opacity:.5}50%{opacity:1}}
+.playground-upload.drag-over{border-color:var(--accent);background:rgba(59,130,246,.05)}
 
 /* PRODUCT CARDS (homepage) */
 .products-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}

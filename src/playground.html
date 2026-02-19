@@ -8,34 +8,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/VeriCorp_Logo_128x128.png" type="image/png">
 <link rel="stylesheet" href="/assets/css/main.css">
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="nav">
-  <div class="nav-inner">
-    <a href="/" class="nav-logo">
-      <img src="/VeriCorp_Logo_128x128.png" width="24" height="24" alt="VeriCorp" style="border-radius:4px">
-      Veri<span>Corp</span>
-    </a>
-    <div class="nav-links" id="navLinks">
-      <div class="nav-dropdown">
-        <a class="nav-dropdown-trigger" style="color:var(--muted);font-size:.875rem;font-weight:500">Products</a>
-        <div class="nav-dropdown-menu">
-          <a href="/products/company-verify">Company Verify<small>VAT validation + enrichment for 28 EU countries</small></a>
-          <a href="/products/invoice-extract">Invoice Extract<small>OCR + AI extraction + NIF/IBAN validation</small></a>
-          <a href="/products/doc-validate" class="coming-soon">Doc Validate<small>IBAN, BIC, SEPA, NIF document validation</small></a>
-        </div>
-      </div>
-      <a href="/pricing">Pricing</a>
-      <a href="/playground" class="active">Playground</a>
-      <a href="https://rapidapi.com/vericorp/api/vericorp-invoice-extract" class="nav-cta">Get API Key</a>
-    </div>
-    <button class="nav-mobile" aria-label="Menu">&#9776;</button>
-  </div>
-</nav>
+<div id="nav-root"></div>
+<script src="/assets/js/nav.js"></script>
 
 <!-- PLAYGROUND -->
 <section class="section" style="padding-top:7rem">
@@ -43,24 +22,24 @@
     <div style="text-align:center;margin-bottom:2.5rem">
       <div class="section-label">Interactive Playground</div>
       <h1 class="section-title">Explore the extraction output</h1>
-      <p class="section-subtitle" style="margin-left:auto;margin-right:auto">Select a sample European invoice and explore the full JSON response. Validated fields highlighted in green. Hardcoded samples &mdash; no API calls made.</p>
+      <p class="section-subtitle" style="margin-left:auto;margin-right:auto">Upload your own invoice or select a sample. Real AI extraction &mdash; 5 free calls per hour, no signup required.</p>
     </div>
 
     <div class="playground-box">
-      <!-- Upload zone (decorative — points to RapidAPI) -->
+      <!-- Upload zone -->
       <div style="padding:1.5rem;border-bottom:1px solid rgba(255,255,255,.06)">
-        <div class="playground-upload" style="pointer-events:none;opacity:.5">
+        <div class="playground-upload" style="cursor:pointer">
           <p style="font-size:1.25rem;margin-bottom:.375rem">&#128196;</p>
-          <p>Drop your invoice here &mdash; <a href="https://rapidapi.com/vericorp/api/vericorp-invoice-extract" style="pointer-events:all;opacity:1">Get an API key</a> to try your own files</p>
+          <p>Drop your invoice here or click to upload <span style="color:var(--muted);font-size:.85rem">(PDF, PNG, JPEG &mdash; max 10MB)</span></p>
         </div>
       </div>
 
       <!-- Sample selector -->
       <div class="playground-samples">
         <span class="playground-samples-label">Or try a sample:</span>
-        <button class="playground-sample active" data-sample="pt">&#127477;&#127481; Portuguese Invoice (TechNova Solutions)</button>
-        <button class="playground-sample" data-sample="es">&#127466;&#127480; Spanish Invoice (Diseno Digital Barcelona)</button>
-        <button class="playground-sample" data-sample="de">&#127465;&#127466; German Invoice (Muller Ingenieure AG)</button>
+        <button class="playground-sample active" data-sample="pt"><img src="https://flagcdn.com/20x15/pt.png" alt="PT" style="width:20px;height:15px;border-radius:2px;vertical-align:middle;margin-right:4px"> Portuguese Invoice (TechNova Solutions)</button>
+        <button class="playground-sample" data-sample="es"><img src="https://flagcdn.com/20x15/es.png" alt="ES" style="width:20px;height:15px;border-radius:2px;vertical-align:middle;margin-right:4px"> Spanish Invoice (Diseno Digital Barcelona)</button>
+        <button class="playground-sample" data-sample="de"><img src="https://flagcdn.com/20x15/de.png" alt="DE" style="width:20px;height:15px;border-radius:2px;vertical-align:middle;margin-right:4px"> German Invoice (Muller Ingenieure AG)</button>
       </div>
 
       <!-- JSON Output -->
@@ -72,8 +51,8 @@
 
     <!-- CTA below playground -->
     <div style="text-align:center;margin-top:2.5rem">
-      <p style="color:var(--muted);margin-bottom:1.25rem;font-size:.95rem">Want to try your own invoices? Get a free API key to extract real documents.</p>
-      <a href="https://rapidapi.com/vericorp/api/vericorp-invoice-extract" class="btn btn-primary">Get Free API Key &rarr;</a>
+      <p style="color:var(--muted);margin-bottom:1.25rem;font-size:.95rem">Need more than 5 extractions per hour? Get a free API key for 25/month.</p>
+      <a href="https://rapidapi.com/vericorptestcollab/api/vericorp-invoice-data-extract" class="btn btn-primary">Get Free API Key &rarr;</a>
     </div>
   </div>
 </section>
@@ -93,7 +72,7 @@
       <a href="/products/invoice-extract">Invoice Extract</a>
       <a href="/products/company-verify">Company Verify</a>
       <a href="/products/doc-validate">Doc Validate</a>
-      <a href="/pricing">Pricing</a>
+      <a href="/pricing?product=invoice">Pricing</a>
     </div>
     <div class="footer-col">
       <h4>SDKs</h4>
@@ -123,7 +102,6 @@
   </div>
 </footer>
 
-<script src="/assets/js/nav.js"></script>
 <script src="/assets/js/playground.js"></script>
 </body>
 </html>

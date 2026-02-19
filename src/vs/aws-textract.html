@@ -8,34 +8,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/VeriCorp_Logo_128x128.png" type="image/png">
 <link rel="stylesheet" href="/assets/css/main.css">
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="nav">
-  <div class="nav-inner">
-    <a href="/" class="nav-logo">
-      <img src="/VeriCorp_Logo_128x128.png" width="24" height="24" alt="VeriCorp" style="border-radius:4px">
-      Veri<span>Corp</span>
-    </a>
-    <div class="nav-links" id="navLinks">
-      <div class="nav-dropdown">
-        <a class="nav-dropdown-trigger" style="color:var(--muted);font-size:.875rem;font-weight:500">Products</a>
-        <div class="nav-dropdown-menu">
-          <a href="/products/company-verify">Company Verify<small>VAT validation + enrichment for 28 EU countries</small></a>
-          <a href="/products/invoice-extract">Invoice Extract<small>OCR + AI extraction + NIF/IBAN validation</small></a>
-          <a href="/products/doc-validate" class="coming-soon">Doc Validate<small>IBAN, BIC, SEPA, NIF document validation</small></a>
-        </div>
-      </div>
-      <a href="/pricing">Pricing</a>
-      <a href="/playground">Playground</a>
-      <a href="https://rapidapi.com/vericorp/api/vericorp-invoice-extract" class="nav-cta">Get API Key</a>
-    </div>
-    <button class="nav-mobile" aria-label="Menu">&#9776;</button>
-  </div>
-</nav>
+<div id="nav-root"></div>
+<script src="/assets/js/nav.js"></script>
 
 <!-- HERO -->
 <section class="vs-hero">
@@ -152,7 +131,7 @@ aws textract get-expense-analysis \
   <h2>Switch from Textract in 5 minutes</h2>
   <p>One endpoint, one API key, validated JSON. No AWS setup required.</p>
   <div class="hero-buttons">
-    <a href="https://rapidapi.com/vericorp/api/vericorp-invoice-extract" class="btn btn-primary">Try VeriCorp Free &rarr;</a>
+    <a href="https://rapidapi.com/vericorptestcollab/api/vericorp-invoice-data-extract" class="btn btn-primary">Try VeriCorp Free &rarr;</a>
     <a href="/playground" class="btn btn-secondary">See it in action</a>
   </div>
 </section>
@@ -186,7 +165,7 @@ aws textract get-expense-analysis \
       <h4>Products</h4>
       <a href="/products/invoice-extract">Invoice Extract</a>
       <a href="/products/company-verify">Company Verify</a>
-      <a href="/pricing">Pricing</a>
+      <a href="/pricing?product=invoice">Pricing</a>
     </div>
     <div class="footer-col">
       <h4>Compare</h4>
@@ -203,7 +182,7 @@ aws textract get-expense-analysis \
     </div>
     <div class="footer-col">
       <h4>Company</h4>
-      <a href="https://rapidapi.com/vericorp/api/vericorp-invoice-extract" target="_blank">RapidAPI</a>
+      <a href="https://rapidapi.com/vericorptestcollab/api/vericorp-invoice-data-extract" target="_blank">RapidAPI</a>
       <a href="https://github.com/vericorptest-collab" target="_blank">GitHub</a>
     </div>
   </div>
@@ -213,6 +192,5 @@ aws textract get-expense-analysis \
   </div>
 </footer>
 
-<script src="/assets/js/nav.js"></script>
 </body>
 </html>

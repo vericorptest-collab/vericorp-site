@@ -12,34 +12,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/VeriCorp_Logo_128x128.png" type="image/png">
 <link rel="stylesheet" href="/assets/css/main.css">
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="nav">
-  <div class="nav-inner">
-    <a href="/" class="nav-logo">
-      <img src="/VeriCorp_Logo_128x128.png" width="24" height="24" alt="VeriCorp" style="border-radius:4px">
-      Veri<span>Corp</span>
-    </a>
-    <div class="nav-links" id="navLinks">
-      <div class="nav-dropdown">
-        <a class="nav-dropdown-trigger" style="color:var(--muted);font-size:.875rem;font-weight:500">Products</a>
-        <div class="nav-dropdown-menu">
-          <a href="/products/company-verify">Company Verify<small>VAT validation + enrichment for 28 EU countries</small></a>
-          <a href="/products/invoice-extract">Invoice Extract<small>OCR + AI extraction + NIF/IBAN validation</small></a>
-          <a href="/products/doc-validate" class="coming-soon">Doc Validate<small>IBAN, BIC, SEPA, NIF document validation</small></a>
-        </div>
-      </div>
-      <a href="/pricing">Pricing</a>
-      <a href="/playground">Playground</a>
-      <a href="https://rapidapi.com/vericorp/api/vericorp-invoice-extract" class="nav-cta">Get API Key</a>
-    </div>
-    <button class="nav-mobile" aria-label="Menu">&#9776;</button>
-  </div>
-</nav>
+<div id="nav-root"></div>
+<script src="/assets/js/nav.js"></script>
 
 <!-- HERO -->
 <section class="hero">
@@ -127,11 +106,11 @@
     <p class="section-subtitle">SDKs, tools, and integrations for every workflow. All open-source.</p>
     <div class="eco-grid">
 
-      <a class="eco-card" href="https://www.npmjs.com/package/vericorp" target="_blank" rel="noopener">
+      <a class="eco-card" href="https://www.npmjs.com/package/@vericorp/company-verify" target="_blank" rel="noopener">
         <div class="eco-icon">&#128230;</div>
         <h3>JS SDK (Company)</h3>
         <p>TypeScript-first, zero deps, retry with backoff, ESM + CJS.</p>
-        <code>npm install vericorp</code>
+        <code>npm install @vericorp/company-verify</code>
         <span class="eco-link">View on npm &rarr;</span>
       </a>
 
@@ -143,11 +122,11 @@
         <span class="eco-link">View on npm &rarr;</span>
       </a>
 
-      <a class="eco-card" href="https://pypi.org/project/vericorp/" target="_blank" rel="noopener">
+      <a class="eco-card" href="https://pypi.org/project/vericorp-company-verify/" target="_blank" rel="noopener">
         <div class="eco-icon">&#128013;</div>
         <h3>Python SDK (Company)</h3>
         <p>Sync + async, Pydantic v2, httpx, full type hints.</p>
-        <code>pip install vericorp</code>
+        <code>pip install vericorp-company-verify</code>
         <span class="eco-link">View on PyPI &rarr;</span>
       </a>
 
@@ -232,7 +211,7 @@
   <h2>Ready to work with European financial data?</h2>
   <p>Start with a free tier. No credit card required.</p>
   <div class="hero-buttons">
-    <a href="https://rapidapi.com/vericorp/api/vericorp-invoice-extract" class="btn btn-primary">Get Free API Key &rarr;</a>
+    <a href="/pricing" class="btn btn-primary">Get Free API Key &rarr;</a>
     <a href="/playground" class="btn btn-secondary">Try the Playground</a>
   </div>
 </section>
@@ -281,6 +260,5 @@
   </div>
 </footer>
 
-<script src="/assets/js/nav.js"></script>
 </body>
 </html>

@@ -12,34 +12,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/VeriCorp_Logo_128x128.png" type="image/png">
 <link rel="stylesheet" href="/assets/css/main.css">
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="nav">
-  <div class="nav-inner">
-    <a href="/" class="nav-logo">
-      <img src="/VeriCorp_Logo_128x128.png" width="24" height="24" alt="VeriCorp" style="border-radius:4px">
-      Veri<span>Corp</span>
-    </a>
-    <div class="nav-links" id="navLinks">
-      <div class="nav-dropdown">
-        <a class="nav-dropdown-trigger" style="color:var(--muted);font-size:.875rem;font-weight:500">Products</a>
-        <div class="nav-dropdown-menu">
-          <a href="/products/company-verify" class="active">Company Verify<small>VAT validation + enrichment for 28 EU countries</small></a>
-          <a href="/products/invoice-extract">Invoice Extract<small>OCR + AI extraction + NIF/IBAN validation</small></a>
-          <a href="/products/doc-validate" class="coming-soon">Doc Validate<small>IBAN, BIC, SEPA, NIF document validation</small></a>
-        </div>
-      </div>
-      <a href="/pricing">Pricing</a>
-      <a href="/playground">Playground</a>
-      <a href="https://rapidapi.com/vericorptestcollab/api/vericorp" class="nav-cta">Get API Key</a>
-    </div>
-    <button class="nav-mobile" aria-label="Menu">&#9776;</button>
-  </div>
-</nav>
+<div id="nav-root"></div>
+<script src="/assets/js/nav.js"></script>
 
 <!-- HERO -->
 <section class="hero">
@@ -158,19 +137,19 @@
     <p class="section-subtitle">SDKs, tools, and integrations for every workflow. All open-source.</p>
     <div class="eco-grid">
 
-      <a class="eco-card" href="https://www.npmjs.com/package/vericorp" target="_blank" rel="noopener">
+      <a class="eco-card" href="https://www.npmjs.com/package/@vericorp/company-verify" target="_blank" rel="noopener">
         <div class="eco-icon">&#128230;</div>
         <h3>JavaScript SDK</h3>
         <p>TypeScript-first, zero dependencies, retry with backoff, ESM + CJS.</p>
-        <code>npm install vericorp</code>
+        <code>npm install @vericorp/company-verify</code>
         <span class="eco-link">View on npm &rarr;</span>
       </a>
 
-      <a class="eco-card" href="https://pypi.org/project/vericorp/" target="_blank" rel="noopener">
+      <a class="eco-card" href="https://pypi.org/project/vericorp-company-verify/" target="_blank" rel="noopener">
         <div class="eco-icon">&#128013;</div>
         <h3>Python SDK</h3>
         <p>Sync + async clients, Pydantic v2 models, httpx, full type hints.</p>
-        <code>pip install vericorp</code>
+        <code>pip install vericorp-company-verify</code>
         <span class="eco-link">View on PyPI &rarr;</span>
       </a>
 
@@ -247,7 +226,7 @@
       </div>
       <div class="code-block" id="tab-js">
         <button class="code-copy" onclick="copyCode(this)">Copy</button>
-<pre><span class="kw">import</span> { VeriCorp } <span class="kw">from</span> <span class="str">'vericorp'</span>;
+<pre><span class="kw">import</span> { VeriCorp } <span class="kw">from</span> <span class="str">'@vericorp/company-verify'</span>;
 
 <span class="kw">const</span> client = <span class="kw">new</span> <span class="fn">VeriCorp</span>(<span class="str">'YOUR_API_KEY'</span>);
 
@@ -261,7 +240,7 @@ console.<span class="fn">log</span>(result.valid);    <span class="cm">// true</
       </div>
       <div class="code-block" id="tab-python">
         <button class="code-copy" onclick="copyCode(this)">Copy</button>
-<pre><span class="kw">from</span> vericorp <span class="kw">import</span> VeriCorp
+<pre><span class="kw">from</span> vericorp_company_verify <span class="kw">import</span> VeriCorp
 
 client = <span class="fn">VeriCorp</span>(<span class="str">"YOUR_API_KEY"</span>)
 
@@ -270,7 +249,7 @@ company = client.<span class="fn">lookup</span>(<span class="str">"PT502011378"<
 <span class="fn">print</span>(company.status)    <span class="cm"># "active"</span>
 
 <span class="cm"># Async version</span>
-<span class="kw">from</span> vericorp <span class="kw">import</span> AsyncVeriCorp
+<span class="kw">from</span> vericorp_company_verify <span class="kw">import</span> AsyncVeriCorp
 
 <span class="kw">async</span> <span class="kw">with</span> <span class="fn">AsyncVeriCorp</span>(<span class="str">"YOUR_API_KEY"</span>) <span class="kw">as</span> client:
     company = <span class="kw">await</span> client.<span class="fn">lookup</span>(<span class="str">"PT502011378"</span>)</pre>
@@ -463,7 +442,7 @@ company = client.<span class="fn">lookup</span>(<span class="str">"PT502011378"<
       <a href="/products/company-verify">Company Verify</a>
       <a href="/products/invoice-extract">Invoice Extract</a>
       <a href="/products/doc-validate">Doc Validate</a>
-      <a href="/pricing">Pricing</a>
+      <a href="/pricing?product=company">Pricing</a>
     </div>
     <div class="footer-col">
       <h4>SDKs</h4>
@@ -474,10 +453,9 @@ company = client.<span class="fn">lookup</span>(<span class="str">"PT502011378"<
     </div>
     <div class="footer-col">
       <h4>Resources</h4>
-      <a href="/playground">Playground</a>
+      <a href="https://vericorp-checker.pages.dev" target="_blank">Live Demo</a>
       <a href="https://github.com/vericorptest-collab/vericorp-postman" target="_blank">Postman Collection</a>
       <a href="https://www.npmjs.com/package/eu-tax-id-validator" target="_blank">Tax ID Validator</a>
-      <a href="https://vericorp-checker.pages.dev" target="_blank">Free VAT Checker</a>
     </div>
     <div class="footer-col">
       <h4>Integrations</h4>
@@ -493,7 +471,6 @@ company = client.<span class="fn">lookup</span>(<span class="str">"PT502011378"<
   </div>
 </footer>
 
-<script src="/assets/js/nav.js"></script>
 <script src="/assets/js/tabs.js"></script>
 <script>
 /* Demo */

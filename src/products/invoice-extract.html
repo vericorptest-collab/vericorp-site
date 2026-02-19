@@ -12,34 +12,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/VeriCorp_Logo_128x128.png" type="image/png">
 <link rel="stylesheet" href="/assets/css/main.css">
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="nav">
-  <div class="nav-inner">
-    <a href="/" class="nav-logo">
-      <img src="/VeriCorp_Logo_128x128.png" width="24" height="24" alt="VeriCorp" style="border-radius:4px">
-      Veri<span>Corp</span>
-    </a>
-    <div class="nav-links" id="navLinks">
-      <div class="nav-dropdown">
-        <a class="nav-dropdown-trigger" style="color:var(--muted);font-size:.875rem;font-weight:500">Products</a>
-        <div class="nav-dropdown-menu">
-          <a href="/products/company-verify">Company Verify<small>VAT validation + enrichment for 28 EU countries</small></a>
-          <a href="/products/invoice-extract" class="active">Invoice Extract<small>OCR + AI extraction + NIF/IBAN validation</small></a>
-          <a href="/products/doc-validate" class="coming-soon">Doc Validate<small>IBAN, BIC, SEPA, NIF document validation</small></a>
-        </div>
-      </div>
-      <a href="/pricing">Pricing</a>
-      <a href="/playground">Playground</a>
-      <a href="https://rapidapi.com/vericorp/api/vericorp-invoice-extract" class="nav-cta">Get API Key</a>
-    </div>
-    <button class="nav-mobile" aria-label="Menu">&#9776;</button>
-  </div>
-</nav>
+<div id="nav-root"></div>
+<script src="/assets/js/nav.js"></script>
 
 <!-- HERO -->
 <section class="hero">
@@ -50,7 +29,7 @@
   <h1>Upload an invoice.<br><span class="gradient">Get structured JSON.</span></h1>
   <p>The only API that combines OCR + AI extraction + NIF/VAT validation + IBAN verification in a single endpoint. Built for European invoices.</p>
   <div class="hero-buttons">
-    <a href="https://rapidapi.com/vericorp/api/vericorp-invoice-extract" class="btn btn-primary">Try Free on RapidAPI &rarr;</a>
+    <a href="https://rapidapi.com/vericorptestcollab/api/vericorp-invoice-data-extract" class="btn btn-primary">Try Free on RapidAPI &rarr;</a>
     <a href="/playground" class="btn btn-secondary">Interactive Playground</a>
   </div>
   <div class="hero-stats">
@@ -119,9 +98,9 @@
     <div class="playground-box">
       <div class="playground-samples">
         <span class="playground-samples-label">Samples:</span>
-        <button class="playground-sample active" data-sample="pt">&#127477;&#127481; Portuguese Invoice</button>
-        <button class="playground-sample" data-sample="es">&#127466;&#127480; Spanish Invoice</button>
-        <button class="playground-sample" data-sample="de">&#127465;&#127466; German Invoice</button>
+        <button class="playground-sample active" data-sample="pt"><img src="https://flagcdn.com/20x15/pt.png" alt="PT" style="width:20px;height:15px;border-radius:2px;vertical-align:middle;margin-right:4px"> Portuguese Invoice</button>
+        <button class="playground-sample" data-sample="es"><img src="https://flagcdn.com/20x15/es.png" alt="ES" style="width:20px;height:15px;border-radius:2px;vertical-align:middle;margin-right:4px"> Spanish Invoice</button>
+        <button class="playground-sample" data-sample="de"><img src="https://flagcdn.com/20x15/de.png" alt="DE" style="width:20px;height:15px;border-radius:2px;vertical-align:middle;margin-right:4px"> German Invoice</button>
       </div>
       <div class="playground-json" style="min-height:400px"><span style="color:var(--muted)">// Select a sample to see the response...</span></div>
       <div class="playground-meta"></div>
@@ -404,7 +383,7 @@ result = client.<span class="fn">extract</span>(
           <li>Quality detection</li>
           <li>Community support</li>
         </ul>
-        <a href="https://rapidapi.com/vericorp/api/vericorp-invoice-extract" class="price-btn price-btn-secondary">Start Free</a>
+        <a href="https://rapidapi.com/vericorptestcollab/api/vericorp-invoice-data-extract" class="price-btn price-btn-secondary">Start Free</a>
       </div>
       <div class="price-card">
         <h3>Basic</h3>
@@ -416,7 +395,7 @@ result = client.<span class="fn">extract</span>(
           <li>Email support</li>
           <li>Multi-page PDFs</li>
         </ul>
-        <a href="https://rapidapi.com/vericorp/api/vericorp-invoice-extract" class="price-btn price-btn-secondary">Get Basic</a>
+        <a href="https://rapidapi.com/vericorptestcollab/api/vericorp-invoice-data-extract" class="price-btn price-btn-secondary">Get Basic</a>
       </div>
       <div class="price-card popular">
         <h3>Pro</h3>
@@ -428,7 +407,7 @@ result = client.<span class="fn">extract</span>(
           <li>Priority support</li>
           <li>Webhook notifications</li>
         </ul>
-        <a href="https://rapidapi.com/vericorp/api/vericorp-invoice-extract" class="price-btn price-btn-primary">Get Pro</a>
+        <a href="https://rapidapi.com/vericorptestcollab/api/vericorp-invoice-data-extract" class="price-btn price-btn-primary">Get Pro</a>
       </div>
       <div class="price-card">
         <h3>Enterprise</h3>
@@ -440,7 +419,7 @@ result = client.<span class="fn">extract</span>(
           <li>Dedicated support</li>
           <li>SLA guarantee</li>
         </ul>
-        <a href="https://rapidapi.com/vericorp/api/vericorp-invoice-extract" class="price-btn price-btn-secondary">Contact Us</a>
+        <a href="https://rapidapi.com/vericorptestcollab/api/vericorp-invoice-data-extract" class="price-btn price-btn-secondary">Contact Us</a>
       </div>
     </div>
     <p style="margin-top:1.5rem;color:#64748B;font-size:.85rem">Multi-page PDFs count as 1 extraction. No per-page charges.</p>
@@ -452,7 +431,7 @@ result = client.<span class="fn">extract</span>(
   <h2>Start extracting invoices in 30 seconds.</h2>
   <p>Upload an invoice, get validated structured JSON. No credit card required.</p>
   <div class="hero-buttons">
-    <a href="https://rapidapi.com/vericorp/api/vericorp-invoice-extract" class="btn btn-primary">Get Free API Key &rarr;</a>
+    <a href="https://rapidapi.com/vericorptestcollab/api/vericorp-invoice-data-extract" class="btn btn-primary">Get Free API Key &rarr;</a>
     <a href="/playground" class="btn btn-secondary">Try the Playground</a>
   </div>
 </section>
@@ -472,7 +451,7 @@ result = client.<span class="fn">extract</span>(
       <a href="/products/invoice-extract">Invoice Extract</a>
       <a href="/products/company-verify">Company Verify</a>
       <a href="/products/doc-validate">Doc Validate</a>
-      <a href="/pricing">Pricing</a>
+      <a href="/pricing?product=invoice">Pricing</a>
     </div>
     <div class="footer-col">
       <h4>SDKs</h4>
@@ -502,7 +481,6 @@ result = client.<span class="fn">extract</span>(
   </div>
 </footer>
 
-<script src="/assets/js/nav.js"></script>
 <script src="/assets/js/tabs.js"></script>
 <script src="/assets/js/playground.js"></script>
 </body>
